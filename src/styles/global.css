@@ -54,6 +54,10 @@ svg {
   display: block;
   max-width: 100%;
 }
+/* Width and height attributes only reserve space: the ratio always comes from the file. */
+img {
+  height: auto;
+}
 
 a {
   color: inherit;

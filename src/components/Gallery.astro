@@ -22,7 +22,6 @@ const isWide = (image: ImageMetadata): boolean => image.width / image.height > 1
               <button
                 type="button"
                 class="frame"
-                style={`aspect-ratio:${item.src.width} / ${item.src.height}`}
                 data-zoom={index}
                 data-src={item.src.src}
                 data-alt={item.alt}
@@ -105,11 +104,10 @@ const isWide = (image: ImageMetadata): boolean => image.width / image.height > 1
     overflow: hidden;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
   }
+  /* The image sets the frame size, so it is never cropped nor stretched. */
   .frame :global(img) {
     width: 100%;
-    height: 100%;
-    /* The whole screenshot stays visible: never cropped. */
-    object-fit: contain;
+    height: auto;
     filter: grayscale(1) brightness(0.82) contrast(1.02);
     transition: filter 0.4s var(--ease), transform 0.5s var(--ease);
   }
@@ -228,10 +226,7 @@ const isWide = (image: ImageMetadata): boolean => image.width / image.height > 1
   }
 
   @media (max-width: 900px) {
-    .gallery.is-empty {
-    display: contents;
-  }
-  .gallery ul {
+    .gallery ul {
       grid-template-columns: minmax(0, 1fr);
     }
     .narrow,
