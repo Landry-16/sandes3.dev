@@ -1,0 +1,190 @@
+---
+import { Image } from "astro:assets";
+import poster from "../assets/hero-poster.jpg";
+import { profile } from "../data/profile";
+---
+
+<section class="hero" data-hero aria-labelledby="hero-name">
+  <Image class="poster" src={poster} alt="" widths={[640, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+  <canvas class="scene" data-hero-canvas aria-hidden="true"></canvas>
+  <div class="shade" aria-hidden="true"></div>
+
+  <p class="samples" aria-hidden="true"><span data-hero-samples>Rendu en direct</span></p>
+
+  <div class="content">
+    <h1 class="name" id="hero-name"><span>{profile.firstName}</span> <em>{profile.lastName}</em></h1>
+    <div class="intro">
+      <p class="lede"><strong>{profile.role}.</strong> {profile.tagline}</p>
+      <div class="actions">
+        <a class="btn btn-light" href="#contact">Me confier un projet</a>
+        <a class="btn btn-ghost" href="#projets">Voir les projets</a>
+      </div>
+      <p class="availability"><span class="dot" aria-hidden="true"></span>{profile.availability}</p>
+    </div>
+  </div>
+
+  <p class="hint" aria-hidden="true">
+    <span class="hint-live">Bougez la souris pour déplacer la lumière. Ce rendu est calculé en direct par votre carte graphique.</span>
+    <span class="hint-static">Rendu calculé par mon path tracer WebGL.</span>
+  </p>
+</section>
+
+<script>
+  import { startHero } from "../scripts/hero";
+
+  const root = document.querySelector<HTMLElement>("[data-hero]");
+  if (root) startHero(root);
+</script>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 640px;
+    height: min(100svh, 1000px);
+    overflow: hidden;
+    background: var(--black);
+    isolation: isolate;
+    touch-action: pan-y;
+  }
+  .poster,
+  .scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .poster {
+    filter: brightness(0.62) contrast(1.1);
+    transition: opacity 1.2s var(--ease);
+  }
+  .scene {
+    opacity: 0;
+    filter: brightness(0.62) contrast(1.1);
+    transition: opacity 1.2s var(--ease);
+    cursor: crosshair;
+  }
+  :global(.hero.is-live) .scene {
+    opacity: 1;
+  }
+  :global(.hero.is-live) .poster {
+    opacity: 0;
+  }
+  .shade {
+    position: absolute;
+    inset: 40% 0 0 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.88));
+    pointer-events: none;
+  }
+
+  .samples {
+    position: absolute;
+    top: calc(env(safe-area-inset-top, 0px) + 64px);
+    right: var(--gutter);
+    z-index: 2;
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .content {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 28px 48px;
+    padding: 0 var(--gutter) clamp(56px, 8vh, 96px);
+    pointer-events: none;
+  }
+  .content a {
+    pointer-events: auto;
+  }
+
+  .name {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(76px, 15.2vw, 236px);
+    line-height: 0.86;
+    letter-spacing: -0.025em;
+    color: #ffffff;
+    mix-blend-mode: difference;
+    animation: rise 1.4s var(--ease) both;
+  }
+  .name em {
+    font-style: italic;
+  }
+
+  .intro {
+    display: grid;
+    gap: 20px;
+    width: min(100%, 360px);
+    animation: rise 1.4s 0.2s var(--ease) both;
+  }
+  .lede {
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  .lede strong {
+    font-weight: 500;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .availability {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--ink-mute);
+  }
+  .dot {
+    flex: none;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--ink);
+    box-shadow: 0 0 10px 2px rgba(242, 242, 239, 0.7);
+    transform: translateY(-1px);
+  }
+
+  .hint {
+    position: absolute;
+    left: var(--gutter);
+    bottom: 20px;
+    z-index: 2;
+    font-size: 11px;
+    color: var(--ink-mute);
+  }
+  .hint-static {
+    display: none;
+  }
+  :global(.hero.is-static) .hint-live {
+    display: none;
+  }
+  :global(.hero.is-static) .hint-static {
+    display: inline;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .hero {
+      height: auto;
+      min-height: 100svh;
+    }
+    .content {
+      position: relative;
+      padding-top: 52svh;
+    }
+  }
+</style>
