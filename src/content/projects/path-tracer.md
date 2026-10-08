@@ -6,6 +6,9 @@ kind: École
 team: Équipe Epitech
 stack: [C++17, CMake, SFML, ImGui, Open Image Denoise]
 repo: https://github.com/Landry-16/Path-Tracer_Sandes_copy
+links:
+  - label: Galerie en couleur
+    url: https://github.com/Landry-16/Path-Tracer_Sandes_copy#gallery
 cover: ../../assets/projects/path-tracer/lion.jpg
 coverAlt: Statue de lion en marbre, rendue par le path tracer
 gallery:

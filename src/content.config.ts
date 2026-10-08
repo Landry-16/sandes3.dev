@@ -19,6 +19,8 @@ const projects = defineCollection({
       status: z.enum(["Terminé", "En cours"]).default("Terminé"),
       repo: z.string().url().optional(),
       demo: z.string().url().optional(),
+      demoLabel: z.string().default("Essayer la démo"),
+      links: z.array(z.object({ label: z.string(), url: z.string().url() })).default([]),
       cover: image().optional(),
       coverAlt: z.string().optional(),
       gallery: z.array(z.object({ src: image(), alt: z.string() })).default([]),

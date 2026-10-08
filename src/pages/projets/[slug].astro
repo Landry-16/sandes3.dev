@@ -36,8 +36,9 @@ const facts = [
       <h1>{data.title}</h1>
       <p class="summary">{data.summary}</p>
       <div class="links">
-        {data.demo && <a class="btn btn-light" href={data.demo} rel="noopener" target="_blank">Essayer la démo</a>}
+        {data.demo && <a class="btn btn-light" href={data.demo} rel="noopener" target="_blank">{data.demoLabel}</a>}
         {data.repo && <a class="btn btn-ghost" href={data.repo} rel="noopener" target="_blank">Code source</a>}
+        {data.links.map((l) => <a class="btn btn-ghost" href={l.url} rel="noopener" target="_blank">{l.label}</a>)}
         {!data.repo && <span class="private">Dépôt privé, aperçu seulement</span>}
       </div>
     </header>
