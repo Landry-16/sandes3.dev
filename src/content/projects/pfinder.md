@@ -1,6 +1,6 @@
 ---
 title: P-Finder
-summary: L'outil interne de mon activité freelance, de la recherche de commerces sans site jusqu'à la livraison.
+summary: L'outil interne de mon activité freelance, de la recherche de commerces sans site jusqu'à la livraison de site.
 year: 2026
 kind: Freelance
 team: Solo

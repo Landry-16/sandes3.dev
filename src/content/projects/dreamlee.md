@@ -6,11 +6,11 @@ kind: Personnel
 team: Solo
 stack: [Tauri 2, React, Rust, SQLite, Supabase]
 status: En cours
-cover: ../../assets/projects/dreamlee/editor.jpg
-coverAlt: L'éditeur de manuscrit de Dreamlee, avec le plan du roman et la fiche de la scène
+cover: ../../assets/projects/dreamlee/home.jpg
+coverAlt: L'accueil, avec la reprise d'écriture, l'objectif du jour et les projets
 gallery:
   - src: ../../assets/projects/dreamlee/home.jpg
-    alt: L'accueil, avec la reprise d'écriture, l'objectif du jour et les projets
+    alt: L'éditeur de manuscrit de Dreamlee, avec le plan du roman et la fiche de la scène
   - src: ../../assets/projects/dreamlee/world-map.jpg
     alt: L'éditeur de carte du monde, avec génération procédurale des régions
   - src: ../../assets/projects/dreamlee/character.jpg

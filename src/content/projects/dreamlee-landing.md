@@ -8,13 +8,15 @@ stack: [Astro, TypeScript, Playwright, Vitest]
 repo: https://github.com/Landry-16/Dreamlee-landing-page
 demo: https://dreamlee.vercel.app/
 demoLabel: Voir le site
-cover: ../../assets/projects/dreamlee-landing/hero.jpg
+cover: ../../assets/projects/dreamlee-landing/hero1.jpg
 coverAlt: Le bureau d'un auteur en désordre, en haut de la page Dreamlee
 gallery:
-  - src: ../../assets/projects/dreamlee-landing/section.jpg
+  - src: ../../assets/projects/dreamlee-landing/dreamlee-landing1.jpg
+    alt: L'éditeur adapté aux longues sessions d'écriture
+  - src: ../../assets/projects/dreamlee-landing/dreamlee-landing2.jpg
     alt: Le tableau de liège qui relie personnages, lieux et objets
-  - src: ../../assets/projects/dreamlee-landing/section-2.jpg
-    alt: La section sur le rythme d'écriture, avec minuteur et statistiques
+  - src: ../../assets/projects/dreamlee-landing/dreamlee-landing3.jpg
+    alt: Le générateur de cartes pour donner vie à votre monde
 featured: true
 order: 4
 ---

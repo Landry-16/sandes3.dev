@@ -12,6 +12,7 @@ gallery:
   - src: ../../assets/projects/robocar/loss-curve.jpg
     alt: Courbe d'apprentissage du modèle
 order: 12
+visible: false
 ---
 
 On conduit d'abord la voiture au clavier ou au volant pour enregistrer des trajectoires (capteurs et actions), puis un modèle apprend à reproduire la conduite. Une seconde version affine le pilote par apprentissage par renforcement. Priorité : rester sur la piste avant d'aller vite.
