@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { render } from "astro:content";
 import Page from "../../layouts/Page.astro";
 import Cover from "../../components/Cover.astro";
+import Gallery from "../../components/Gallery.astro";
 import { getVisibleProjects, type Project } from "../../lib/projects";
 
 export async function getStaticPaths() {
@@ -43,15 +44,26 @@ const facts = [
       </div>
     </header>
 
-    <div class="hero-visual" data-lit>
-      {
-        data.cover ? (
+    {
+      data.cover ? (
+        <button
+          type="button"
+          class="hero-visual is-zoomable"
+          style={`aspect-ratio:${data.cover.width} / ${data.cover.height}`}
+          data-lit
+          data-zoom="cover"
+          data-src={data.cover.src}
+          data-alt={data.coverAlt ?? data.title}
+          aria-label={`Agrandir : ${data.coverAlt ?? data.title}`}
+        >
           <Image src={data.cover} alt={data.coverAlt ?? ""} widths={[800, 1280, 1800]} sizes="100vw" loading="eager" />
-        ) : (
+        </button>
+      ) : (
+        <div class="hero-visual" data-lit>
           <Cover title={data.title} slug={project.id} stack={data.stack} />
-        )
-      }
-    </div>
+        </div>
+      )
+    }
 
     <div class="body">
       <dl class="facts">
@@ -73,20 +85,7 @@ const facts = [
       </div>
     </div>
 
-    {
-      data.gallery.length > 0 && (
-        <ul class="gallery">
-          {data.gallery.map((item) => (
-            <li>
-              <figure data-lit>
-                <Image src={item.src} alt={item.alt} widths={[640, 960, 1400]} sizes="(max-width: 900px) 100vw, 50vw" loading="lazy" />
-                <figcaption>{item.alt}</figcaption>
-              </figure>
-            </li>
-          ))}
-        </ul>
-      )
-    }
+    <Gallery items={data.gallery} label={`Images de ${data.title}`} />
 
     <nav class="next" aria-label="Projet suivant">
       <span>Projet suivant</span>
@@ -124,20 +123,37 @@ const facts = [
     font-size: 13px;
     color: var(--ink-mute);
   }
+  :global(.gallery) {
+    margin-top: clamp(72px, 9vw, 120px);
+  }
   .hero-visual {
     --lit: 0.6;
-    aspect-ratio: 16 / 8;
+    display: block;
+    width: 100%;
+    max-height: 78svh;
+    padding: 0;
+    border: 1px solid var(--line);
     overflow: hidden;
     background: #0f0f0e;
     box-shadow: var(--shadow-x, 14px) var(--shadow-y, 24px) 60px rgba(0, 0, 0, 0.9);
+  }
+  div.hero-visual {
+    aspect-ratio: 16 / 8;
+  }
+  .is-zoomable {
+    cursor: zoom-in;
   }
   .hero-visual :global(img),
   .hero-visual :global(.cover) {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     filter: grayscale(1) contrast(1.05) brightness(calc(0.5 + var(--lit) * 0.55));
     transition: filter 0.3s var(--ease);
+  }
+  .is-zoomable:hover :global(img),
+  .is-zoomable:focus-visible :global(img) {
+    filter: grayscale(0.1) contrast(1) brightness(1);
   }
   .body {
     display: grid;
@@ -186,31 +202,6 @@ const facts = [
     background: #1a1a19;
     border-radius: 3px;
   }
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
-    gap: 40px 32px;
-    margin: clamp(72px, 9vw, 120px) 0 0;
-    padding: 0;
-    list-style: none;
-  }
-  figure {
-    --lit: 0.5;
-    margin: 0;
-    display: grid;
-    gap: 12px;
-  }
-  figure :global(img) {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    filter: grayscale(1) brightness(calc(0.5 + var(--lit) * 0.55));
-    box-shadow: var(--shadow-x, 12px) var(--shadow-y, 18px) 48px rgba(0, 0, 0, 0.85);
-  }
-  figcaption {
-    font-size: 13px;
-    color: var(--ink-mute);
-  }
   .next {
     display: grid;
     gap: 6px;
@@ -233,7 +224,7 @@ const facts = [
     .body {
       grid-template-columns: minmax(0, 1fr);
     }
-    .hero-visual {
+    div.hero-visual {
       aspect-ratio: 4 / 3;
     }
   }
