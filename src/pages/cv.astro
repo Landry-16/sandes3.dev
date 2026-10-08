@@ -1,0 +1,280 @@
+---
+import Base from "../layouts/Base.astro";
+import { associative, education, experience, interests, objective, profileSummary, skills } from "../data/cv";
+import { cvFile, profile } from "../data/profile";
+import { getFeaturedProjects } from "../lib/projects";
+
+const projects = (await getFeaturedProjects()).slice(0, 5);
+const site = Astro.site ? Astro.site.host : "";
+---
+
+<Base title="CV, Sandes Savarimuthu" description="CV de Sandes Savarimuthu, développeur logiciel et web, étudiant à Epitech Paris.">
+  <div class="toolbar">
+    <a href="/">Retour au portfolio</a>
+    <a class="btn btn-light" href={cvFile} download>Télécharger le PDF</a>
+  </div>
+
+  <main class="sheet">
+    <header class="top">
+      <div>
+        <h1>{profile.name}</h1>
+        <p class="role">{profile.role}</p>
+      </div>
+      <ul class="contact">
+        <li>{profile.city}</li>
+        <li><a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+        <li class="print-only">{profile.phone}</li>
+        <li><a href={profile.links.linkedin}>linkedin.com/in/sandes-savarimuthu</a></li>
+        <li><a href={profile.links.github}>github.com/Landry-16</a></li>
+        {site && <li><a href="/">{site}</a></li>}
+      </ul>
+    </header>
+
+    <section class="intro">
+      <p>{profileSummary}</p>
+      <p class="objective">{objective}</p>
+    </section>
+
+    <div class="columns">
+      <div class="main">
+        <section>
+          <h2>Expérience</h2>
+          {
+            experience.map((e) => (
+              <article class="entry">
+                <p class="period">{e.period}</p>
+                <h3>
+                  {e.title}, <span>{e.place}</span>
+                </h3>
+                <p>{e.summary}</p>
+                {e.details && (
+                  <ul>
+                    {e.details.map((d) => (
+                      <li>{d}</li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            ))
+          }
+        </section>
+
+        <section>
+          <h2>Projets</h2>
+          {
+            projects.map((p) => (
+              <article class="entry">
+                <h3>
+                  {p.data.title}, <span>{p.data.stack.slice(0, 3).join(", ")}</span>
+                </h3>
+                <p>{p.data.summary}</p>
+              </article>
+            ))
+          }
+        </section>
+      </div>
+
+      <aside class="side">
+        <section>
+          <h2>Formation</h2>
+          {
+            education.map((e) => (
+              <article class="entry">
+                <p class="period">{e.period}</p>
+                <h3>{e.place}</h3>
+                <p>{e.title}. {e.summary}</p>
+              </article>
+            ))
+          }
+        </section>
+
+        <section>
+          <h2>Compétences</h2>
+          <dl>
+            {
+              skills.map((s) => (
+                <div>
+                  <dt>{s.label}</dt>
+                  <dd>{s.value}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </section>
+
+        <section>
+          <h2>Engagements</h2>
+          {
+            associative.map((e) => (
+              <article class="entry">
+                <p class="period">{e.period}</p>
+                <h3>{e.title}</h3>
+                <p>{e.summary}</p>
+              </article>
+            ))
+          }
+        </section>
+
+        <section>
+          <h2>Centres d'intérêt</h2>
+          <p>{interests}</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+</Base>
+
+<style>
+  :global(body) {
+    background: #141413;
+  }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px 24px;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 28px 16px;
+    font-size: 14px;
+  }
+  .sheet {
+    --ink: #0a0a0a;
+    --mute: #5e5e5a;
+    --rule: rgba(10, 10, 10, 0.16);
+    max-width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 64px;
+    padding: 16mm 15mm;
+    background: #fbfbf9;
+    color: var(--ink);
+    font-size: 10pt;
+    line-height: 1.5;
+    color-scheme: light;
+  }
+  .sheet a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px 24px;
+    padding-bottom: 8mm;
+    border-bottom: 1px solid var(--ink);
+  }
+  h1 {
+    font-size: 40pt;
+    line-height: 0.9;
+  }
+  .role {
+    margin-top: 6px;
+    font-size: 11pt;
+    font-weight: 400;
+  }
+  .contact {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+    font-size: 9pt;
+    line-height: 1.6;
+    color: var(--mute);
+  }
+  .print-only {
+    display: none;
+  }
+  .intro {
+    display: grid;
+    gap: 4px;
+    padding-block: 6mm;
+    border-bottom: 1px solid var(--rule);
+    font-size: 10.5pt;
+  }
+  .objective {
+    font-weight: 500;
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    gap: 9mm;
+    padding-top: 6mm;
+  }
+  h2 {
+    font-size: 17pt;
+    margin: 0 0 3mm;
+  }
+  section + section {
+    margin-top: 6mm;
+  }
+  .entry + .entry {
+    margin-top: 3.5mm;
+  }
+  .period {
+    font-size: 8.5pt;
+    color: var(--mute);
+    font-variant-numeric: tabular-nums;
+  }
+  h3 {
+    font-family: var(--sans);
+    font-size: 10.5pt;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+  h3 span {
+    font-weight: 300;
+    color: var(--mute);
+  }
+  .entry ul {
+    margin: 1mm 0 0;
+    padding-left: 4mm;
+  }
+  dl {
+    display: grid;
+    gap: 2.5mm;
+    margin: 0;
+  }
+  dt {
+    font-size: 8.5pt;
+    color: var(--mute);
+  }
+  dd {
+    margin: 0;
+  }
+  @media (max-width: 720px) {
+    .sheet {
+      padding: 24px 20px;
+      min-height: 0;
+    }
+    .columns {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .contact {
+      text-align: left;
+    }
+  }
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  @media print {
+    :global(body) {
+      background: #fbfbf9;
+    }
+    .toolbar {
+      display: none;
+    }
+    .sheet {
+      margin: 0;
+      max-width: none;
+      min-height: 0;
+    }
+    .print-only {
+      display: list-item;
+    }
+  }
+</style>
