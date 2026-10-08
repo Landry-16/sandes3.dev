@@ -1,0 +1,136 @@
+---
+import { cvFile, profile } from "../data/profile";
+---
+
+<section class="contact" id="contact" data-spot aria-labelledby="contact-title">
+  <div class="beam" aria-hidden="true"></div>
+  <div class="wrap inner">
+    <h2 id="contact-title">Un projet ?</h2>
+    <p class="lede">Un site pour votre commerce, une mission, un stage à proposer : écrivez-moi, je réponds personnellement.</p>
+    <p class="email-row">
+      <a class="email" href={`mailto:${profile.email}`}>{profile.email}</a>
+      <button class="copy" type="button" data-copy={profile.email}>Copier l'adresse</button>
+    </p>
+    <ul class="links">
+      <li><a href={profile.links.linkedin} rel="me noopener" target="_blank">LinkedIn</a></li>
+      <li><a href={profile.links.github} rel="me noopener" target="_blank">GitHub</a></li>
+      <li><a href={cvFile} download>CV (PDF)</a></li>
+    </ul>
+  </div>
+  <footer class="wrap footer">
+    <p>Paris. Ce site est éclairé par <a href={profile.links.pathTracer} rel="noopener" target="_blank">un path tracer</a> que j'ai écrit pour l'occasion.</p>
+    <p><a href="https://github.com/Landry-16/sandes3.dev" rel="noopener" target="_blank">Code source du site</a></p>
+  </footer>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-copy]").forEach((button) => {
+    const label = button.textContent;
+    button.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.copy ?? "");
+        button.textContent = "Adresse copiée";
+      } catch {
+        button.textContent = "Copie impossible, sélectionnez l'adresse";
+      }
+      window.setTimeout(() => (button.textContent = label), 2400);
+    });
+  });
+</script>
+
+<style>
+  .contact {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(110px, 14vw, 200px) 40px;
+    background: var(--black);
+    isolation: isolate;
+  }
+  .contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(560px circle at var(--spot-x, 50%) var(--spot-y, 40%), rgba(242, 242, 239, 0.08), transparent 70%);
+  }
+  .beam {
+    position: absolute;
+    top: -40%;
+    left: -30%;
+    z-index: -1;
+    width: 34%;
+    height: 180%;
+    background: linear-gradient(90deg, transparent, rgba(242, 242, 239, 0.07), transparent);
+    transform: rotate(24deg);
+    animation: sweep 14s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes sweep {
+    from {
+      transform: translateX(0) rotate(24deg);
+    }
+    to {
+      transform: translateX(420%) rotate(24deg);
+    }
+  }
+  .inner {
+    display: grid;
+    gap: 28px;
+  }
+  h2 {
+    font-style: italic;
+    font-size: clamp(96px, 16vw, 240px);
+    line-height: 0.88;
+  }
+  .lede {
+    max-width: 46ch;
+    color: var(--ink-mute);
+    font-size: 17px;
+  }
+  .email-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px 28px;
+    margin-top: 12px;
+  }
+  .email {
+    font-family: var(--serif);
+    font-size: clamp(30px, 5.2vw, 76px);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+    text-decoration-thickness: 1px;
+  }
+  .copy {
+    font: 500 14px/1 var(--sans);
+    color: var(--ink);
+    background: none;
+    border: 0;
+    padding: 8px 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 36px;
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    margin-top: clamp(96px, 12vw, 160px);
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--ink-mute);
+  }
+</style>
