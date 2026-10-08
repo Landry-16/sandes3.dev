@@ -1,0 +1,109 @@
+/*
+ * Lumière: a dark room lit by the visitor's cursor.
+ * Pure black ground, warm off-white light, one serif for display, one sans for reading.
+ * The Parcours section flips to paper, like an overexposed print.
+ */
+:root {
+  --black: #000000;
+  --surface: #0d0d0c;
+  --ink: #f2f2ef;
+  --ink-mute: #8c8c88;
+  --line: #2a2a28;
+  --paper: #f2f2ef;
+  --paper-ink: #0a0a0a;
+  --paper-mute: #5e5e5a;
+  --paper-line: rgba(10, 10, 10, 0.16);
+
+  --serif: "Instrument Serif", "Times New Roman", Times, serif;
+  --sans: "Geologica Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --gutter: clamp(20px, 3.4vw, 56px);
+  --max: 1440px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--black);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--black);
+  min-height: 100svh;
+}
+
+img,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+:focus-visible {
+  outline: 1.5px solid currentColor;
+  outline-offset: 4px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
