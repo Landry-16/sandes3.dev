@@ -34,11 +34,14 @@ const y = 15 + ((hash >> 7) % 50);
   }
   .cover-title {
     position: absolute;
-    left: -0.04em;
-    bottom: -0.18em;
+    left: 16px;
+    right: 16px;
+    bottom: 0.12em;
     font-family: var(--serif);
     font-style: italic;
-    font-size: clamp(64px, 9vw, 150px);
+    font-size: clamp(44px, 5.4vw, 96px);
+    overflow: hidden;
+    text-overflow: clip;
     line-height: 1;
     white-space: nowrap;
     color: rgba(242, 242, 239, 0.86);

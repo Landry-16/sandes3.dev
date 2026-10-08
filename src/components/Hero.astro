@@ -55,12 +55,12 @@ import { profile } from "../data/profile";
     object-fit: cover;
   }
   .poster {
-    filter: brightness(0.62) contrast(1.1);
+    filter: grayscale(1) brightness(0.62) contrast(1.1);
     transition: opacity 1.2s var(--ease);
   }
   .scene {
     opacity: 0;
-    filter: brightness(0.62) contrast(1.1);
+    filter: grayscale(1) brightness(0.62) contrast(1.1);
     transition: opacity 1.2s var(--ease);
     cursor: crosshair;
   }
@@ -91,11 +91,10 @@ import { profile } from "../data/profile";
     position: absolute;
     inset: auto 0 0 0;
     z-index: 2;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 28px 48px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 28px clamp(32px, 4vw, 64px);
     padding: 0 var(--gutter) clamp(56px, 8vh, 96px);
     pointer-events: none;
   }
@@ -106,7 +105,7 @@ import { profile } from "../data/profile";
   .name {
     display: flex;
     flex-direction: column;
-    font-size: clamp(76px, 15.2vw, 236px);
+    font-size: clamp(72px, 12.6vw, 220px);
     line-height: 0.86;
     letter-spacing: -0.025em;
     color: #ffffff;
@@ -184,6 +183,7 @@ import { profile } from "../data/profile";
     }
     .content {
       position: relative;
+      grid-template-columns: minmax(0, 1fr);
       padding-top: 52svh;
     }
   }
