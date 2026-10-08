@@ -1,0 +1,69 @@
+---
+interface Props {
+  showClients?: boolean;
+}
+
+const { showClients = false } = Astro.props;
+const links = [
+  { href: "/#projets", label: "Projets" },
+  ...(showClients ? [{ href: "/#clients", label: "Clients" }] : []),
+  { href: "/#parcours", label: "Parcours" },
+  { href: "/cv", label: "CV" },
+  { href: "/#contact", label: "Contact" },
+];
+---
+
+<header class="site-header">
+  <a class="brand" href="/">S. Savarimuthu</a>
+  <nav aria-label="Navigation principale">
+    <ul>
+      {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 20;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 24px;
+    padding: calc(env(safe-area-inset-top, 0px) + 22px) var(--gutter) 16px;
+    color: #ffffff;
+    mix-blend-mode: difference;
+    pointer-events: none;
+  }
+  .site-header a {
+    pointer-events: auto;
+    text-decoration: none;
+  }
+  .brand {
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px clamp(16px, 2.6vw, 36px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 560px) {
+    .brand {
+      display: none;
+    }
+    .site-header {
+      justify-content: flex-start;
+    }
+  }
+</style>
