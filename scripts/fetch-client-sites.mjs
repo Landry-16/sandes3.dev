@@ -8,8 +8,8 @@
  * GitHub to publish or hide a client: no change to this repository is needed.
  *
  * Writes src/data/clients.generated.json and copies hero photos to
- * public/clients/. Without PFINDER_GITHUB_TOKEN it writes an empty list and the
- * section is hidden, so local builds never fail because of it.
+ * public/clients/. Without PFINDER_GITHUB_TOKEN it writes an empty list and only
+ * the template demos are shown, so local builds never fail because of it.
  */
 import { mkdir, rm, writeFile } from "node:fs/promises";
 import { extname, join } from "node:path";
@@ -67,7 +67,7 @@ async function main() {
   await rm(OUT_DIR, { recursive: true, force: true });
   await mkdir(OUT_DIR, { recursive: true });
   if (!TOKEN) {
-    console.log("[clients] PFINDER_GITHUB_TOKEN is not set, the client sites section is hidden.");
+    console.log("[clients] PFINDER_GITHUB_TOKEN is not set, only the template demos are shown.");
     await writeFile(OUT_JSON, "[]\n");
     return;
   }
@@ -85,7 +85,7 @@ async function main() {
     await writeFile(OUT_JSON, `${JSON.stringify(sites, null, 2)}\n`);
     console.log(`[clients] ${sites.length} client site(s) published from ${ORG}.`);
   } catch (err) {
-    console.warn(`[clients] could not reach GitHub (${err.message}), the section is hidden.`);
+    console.warn(`[clients] could not reach GitHub (${err.message}), only the template demos are shown.`);
     await writeFile(OUT_JSON, "[]\n");
   }
 }

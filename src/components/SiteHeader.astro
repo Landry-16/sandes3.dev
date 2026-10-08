@@ -1,12 +1,7 @@
 ---
-interface Props {
-  showClients?: boolean;
-}
-
-const { showClients = false } = Astro.props;
 const links = [
   { href: "/#projets", label: "Projets" },
-  ...(showClients ? [{ href: "/#clients", label: "Clients" }] : []),
+  { href: "/#clients", label: "Sites clients" },
   { href: "/#parcours", label: "Parcours" },
   { href: "/cv", label: "CV" },
   { href: "/#contact", label: "Contact" },

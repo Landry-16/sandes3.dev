@@ -51,6 +51,20 @@ visible: true          # false pour masquer le projet partout
 
 ## Sites clients P-Finder
 
+La section « Sites clients » montre deux choses : les sites livrés et en ligne, puis un modèle par métier, construit avec un commerce fictif.
+
+### Modèles
+
+Chaque modèle est un vrai site, généré par l'atelier de templates de P-Finder et hébergé ici sous `/modeles/<template>/` (`public/modeles/`, avec le bandeau « Maquette » et sans indexation). Le contenu fictif de chaque modèle est dans `demo-sites/<template>.json`, et la liste affichée dans `src/data/templates.ts`.
+
+Pour les reconstruire après une évolution des templates (l'atelier doit avoir ses dépendances installées) :
+
+```bash
+PFINDER_SITES_DIR=../PFinder/sites npm run demos   # public/modeles/ et les captures src/assets/modeles/
+```
+
+### Sites livrés
+
 Les sites livrés avec P-Finder vivent chacun dans un dépôt de l'organisation GitHub `pfinder-sites`. Au build, `scripts/fetch-client-sites.mjs` liste ces dépôts et publie ceux qui :
 
 1. portent le topic GitHub `portfolio` ;
@@ -66,7 +80,7 @@ Configuration (Vercel > Settings > Environment Variables) :
 | `PFINDER_GITHUB_ORG` | Optionnel, `pfinder-sites` par défaut |
 | `SITE_URL` | URL publique du site |
 
-Sans jeton, la section est simplement masquée. Le workflow `.github/workflows/rebuild.yml` relance un build chaque nuit via le secret `VERCEL_DEPLOY_HOOK`, pour que les nouveaux clients apparaissent sans commit.
+Sans jeton, seuls les modèles sont affichés. Le workflow `.github/workflows/rebuild.yml` relance un build chaque nuit via le secret `VERCEL_DEPLOY_HOOK`, pour que les nouveaux clients apparaissent sans commit.
 
 ## CV
 
@@ -84,10 +98,11 @@ Le numéro de téléphone n'apparaît que dans le PDF.
 src/
   components/      sections et cartes
   content/         projets en Markdown
-  data/            profil, CV, sites clients générés
+  data/            profil, CV, modèles et sites clients générés
   layouts/         gabarits de page
   pages/           accueil, projets, CV, 404
   scripts/         rendu de l'accueil et éclairage au curseur
     tracer/        path tracer WebGL2 et shaders GLSL
-scripts/           récupération des sites clients, génération du CV
+demo-sites/        contenu fictif des modèles de sites
+scripts/           sites clients, modèles, génération du CV
 ```

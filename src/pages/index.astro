@@ -8,19 +8,17 @@ import Parcours from "../components/Parcours.astro";
 import Contact from "../components/Contact.astro";
 import { clientSites } from "../lib/clients";
 import { profile } from "../data/profile";
-
-const hasClients = clientSites.length > 0;
 ---
 
 <Base
   title={`${profile.name}, ${profile.role.toLowerCase()}`}
   description="Développeur logiciel et web à Paris, en troisième année à Epitech. Sites pour commerçants, logiciels en C++, Rust et TypeScript."
 >
-  <SiteHeader showClients={hasClients} />
+  <SiteHeader />
   <main>
     <Hero />
     <FeaturedProjects />
-    {hasClients && <ClientSites sites={clientSites} />}
+    <ClientSites sites={clientSites} />
     <Parcours />
     <Contact />
   </main>

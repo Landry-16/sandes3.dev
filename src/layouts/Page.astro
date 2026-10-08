@@ -1,7 +1,6 @@
 ---
 import Base from "./Base.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import { clientSites } from "../lib/clients";
 
 interface Props {
   title: string;
@@ -12,7 +11,7 @@ const { title, description } = Astro.props;
 ---
 
 <Base title={title} description={description}>
-  <SiteHeader showClients={clientSites.length > 0} />
+  <SiteHeader />
   <main class="page" data-spot>
     <slot />
   </main>
