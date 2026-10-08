@@ -1,0 +1,77 @@
+{
+  "template": "cave",
+  "draft": true,
+  "business": {
+    "name": "Cave Lavoisier",
+    "tagline": "Caviste · épicerie fine · Paris 11e",
+    "schemaType": "LiquorStore",
+    "intro": "Vignerons indépendants, champagnes de producteurs, fromages affinés par la maison. Venez goûter avant d'acheter : on ouvre toujours une bouteille le samedi.",
+    "phone": "01 99 00 22 42",
+    "address": {
+      "street": "18 rue Lavoisier",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "access": "Métro Voltaire · livraison à vélo dans Paris dès 6 bouteilles."
+  },
+  "hours": {
+    "lundi": "fermé",
+    "mardi": "11h-20h",
+    "mercredi": "11h-20h",
+    "jeudi": "11h-21h",
+    "vendredi": "11h-21h",
+    "samedi": "10h-21h",
+    "dimanche": "10h-13h"
+  },
+  "theme": {},
+  "hero": {
+    "title": "Des vins",
+    "titleAccent": "qui ont une histoire.",
+    "badge": "Cuvée du moment"
+  },
+  "ribbon": [
+    "Vins nature",
+    "Champagnes de vignerons",
+    "Spiritueux",
+    "Fromages affinés",
+    "Épicerie fine",
+    "Coffrets cadeaux"
+  ],
+  "products": {
+    "title": "Ce qu'on aime en ce moment",
+    "items": [
+      {
+        "name": "Morgon Côte du Py",
+        "tag": "Domaine Lapierre · Beaujolais",
+        "description": "Gamay croquant, fruits noirs. Le vin de la semaine, 24 €."
+      },
+      {
+        "name": "Brut Nature",
+        "tag": "Vincent Couche · Côte des Bar",
+        "description": "Bulles fines, sans dosage, d'un vigneron en biodynamie. 48 €."
+      },
+      {
+        "name": "Comté 30 mois",
+        "tag": "Affiné par la maison",
+        "description": "Cristallin, noisette grillée. Coupé à la demande, 42 € le kilo."
+      }
+    ]
+  },
+  "news": {
+    "kicker": "Chaque samedi",
+    "title": "On ouvre une bouteille, venez la goûter.",
+    "text": "Dégustation libre de 16h à 19h, sans réservation. Fromages offerts.",
+    "cta": "Nous trouver"
+  },
+  "legal": {
+    "company": "Commerce fictif, modèle de démonstration",
+    "legalForm": "Aucune",
+    "siret": "Sans objet",
+    "publisher": "Sandes Savarimuthu",
+    "host": {
+      "name": "Vercel Inc.",
+      "address": "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis"
+    },
+    "madeBy": "Site réalisé par Sandes Savarimuthu"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "template": "chantier",
+  "draft": true,
+  "business": {
+    "name": "Plomberie Dumas",
+    "tagline": "Plombier-chauffagiste · Vincennes et alentours",
+    "schemaType": "Plumber",
+    "intro": "Dépannage, installation et rénovation de salles de bain. Devis gratuit, prix annoncé avant de commencer, intervention en moins d'une heure en cas d'urgence.",
+    "phone": "01 99 00 21 41",
+    "address": {
+      "street": "12 rue de Fontenay",
+      "postcode": "94300",
+      "city": "Vincennes"
+    },
+    "access": "Saint-Mandé, Montreuil, Fontenay-sous-Bois, Nogent, Joinville : déplacement offert dans un rayon de 10 km."
+  },
+  "hours": {
+    "lundi": "8h-19h",
+    "mardi": "8h-19h",
+    "mercredi": "8h-19h",
+    "jeudi": "8h-19h",
+    "vendredi": "8h-19h",
+    "samedi": "9h-13h",
+    "dimanche": "fermé"
+  },
+  "hoursNote": "Urgences 7j/7, de 7h à 22h.",
+  "theme": {},
+  "hero": {
+    "title": "Une fuite ?",
+    "titleAccent": "On arrive.",
+    "tag": [
+      "Prochaine dispo",
+      "Aujourd'hui 14h"
+    ]
+  },
+  "ribbon": [
+    "Dépannage",
+    "Installation",
+    "Salle de bain",
+    "Chauffe-eau",
+    "Recherche de fuite",
+    "Entretien chaudière"
+  ],
+  "services": {
+    "title": "Ce qu'on fait, et combien ça coûte.",
+    "note": "Déplacement offert dans un rayon de 10 km. Tarifs indicatifs : le prix exact est confirmé avant intervention.",
+    "items": [
+      {
+        "name": "Débouchage canalisation",
+        "category": "Dépannage",
+        "duration": "1 h",
+        "price": "dès 90 €"
+      },
+      {
+        "name": "Recherche de fuite",
+        "category": "Dépannage",
+        "duration": "1 à 2 h",
+        "price": "dès 120 €"
+      },
+      {
+        "name": "Remplacement chauffe-eau",
+        "category": "Installation",
+        "duration": "½ journée",
+        "price": "dès 690 €"
+      },
+      {
+        "name": "Pose de WC suspendu",
+        "category": "Installation",
+        "duration": "½ journée",
+        "price": "dès 450 €"
+      },
+      {
+        "name": "Entretien chaudière gaz",
+        "category": "Entretien",
+        "duration": "1 h",
+        "price": "110 €"
+      },
+      {
+        "name": "Rénovation salle de bain",
+        "category": "Rénovation",
+        "duration": "sur devis",
+        "price": "devis gratuit"
+      }
+    ]
+  },
+  "practical": [
+    {
+      "icon": "✓",
+      "title": "Devis gratuit et détaillé",
+      "text": "Avant toute intervention."
+    },
+    {
+      "icon": "✓",
+      "title": "Prix annoncé = prix payé",
+      "text": "Pas de surprise sur la facture."
+    },
+    {
+      "icon": "✓",
+      "title": "Garantie décennale",
+      "text": "Sur tous les travaux d'installation."
+    },
+    {
+      "icon": "✓",
+      "title": "Artisan certifié RGE",
+      "text": "Éligible aux aides à la rénovation."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Intervenez-vous le week-end ?",
+      "a": "Oui, pour les urgences (fuite, plus d'eau chaude), 7 jours sur 7 de 7h à 22h."
+    }
+  ],
+  "legal": {
+    "company": "Commerce fictif, modèle de démonstration",
+    "legalForm": "Aucune",
+    "siret": "Sans objet",
+    "publisher": "Sandes Savarimuthu",
+    "host": {
+      "name": "Vercel Inc.",
+      "address": "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis"
+    },
+    "madeBy": "Site réalisé par Sandes Savarimuthu"
+  }
+}

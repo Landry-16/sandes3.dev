@@ -1,0 +1,77 @@
+{
+  "template": "bouquet",
+  "draft": true,
+  "business": {
+    "name": "Pétales & Cie",
+    "tagline": "Fleuriste · Lyon 6e",
+    "schemaType": "Florist",
+    "intro": "Bouquets de saison composés le matin même, fleurs de producteurs français, livrés à Lyon et Villeurbanne le jour même.",
+    "phone": "01 99 00 23 43",
+    "address": {
+      "street": "27 cours Vitton",
+      "postcode": "69006",
+      "city": "Lyon"
+    },
+    "access": "Livraison à Lyon et Villeurbanne, du mardi au samedi. Commande avant 13h, livré avant 17h."
+  },
+  "hours": {
+    "lundi": "fermé",
+    "mardi": "9h-19h30",
+    "mercredi": "9h-19h30",
+    "jeudi": "9h-19h30",
+    "vendredi": "9h-19h30",
+    "samedi": "9h-19h30",
+    "dimanche": "9h-13h"
+  },
+  "theme": {},
+  "hero": {
+    "title": "Des fleurs",
+    "titleAccent": "cueillies pour vous.",
+    "badge": "Livré le jour même"
+  },
+  "ribbon": [
+    "Bouquets du jour",
+    "Mariages",
+    "Deuil",
+    "Plantes",
+    "Abonnements",
+    "Ateliers floraux"
+  ],
+  "products": {
+    "title": "Composés le matin, livrés l'après-midi.",
+    "items": [
+      {
+        "name": "Le bouquet du jour",
+        "tag": "Best-seller",
+        "description": "Selon l'arrivage : pivoines, renoncules, feuillages. Dès 35 €."
+      },
+      {
+        "name": "Le champêtre",
+        "tag": "De saison",
+        "description": "Fleurs des champs et graminées, esprit cueillette. Dès 45 €."
+      },
+      {
+        "name": "L'abonnement",
+        "tag": "Pour les pros",
+        "description": "Un bouquet frais chaque semaine, livré au bureau. 29 € par semaine."
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Livrez-vous le dimanche ?",
+      "a": "Non, mais la boutique est ouverte le dimanche matin."
+    }
+  ],
+  "legal": {
+    "company": "Commerce fictif, modèle de démonstration",
+    "legalForm": "Aucune",
+    "siret": "Sans objet",
+    "publisher": "Sandes Savarimuthu",
+    "host": {
+      "name": "Vercel Inc.",
+      "address": "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis"
+    },
+    "madeBy": "Site réalisé par Sandes Savarimuthu"
+  }
+}

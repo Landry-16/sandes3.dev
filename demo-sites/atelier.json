@@ -1,0 +1,102 @@
+{
+  "template": "atelier",
+  "draft": true,
+  "business": {
+    "name": "Maison Lise",
+    "tagline": "Salon de coiffure · Lyon 6e",
+    "schemaType": "HairSalon",
+    "intro": "Coupe, couleur et coiffage dans un salon calme, sur rendez-vous.",
+    "phone": "01 99 00 56 78",
+    "address": {
+      "street": "5 rue des Glycines",
+      "postcode": "69006",
+      "city": "Lyon"
+    },
+    "access": "Rendez-vous par téléphone."
+  },
+  "hours": {
+    "lundi": "fermé",
+    "mardi": "10:00-18:30",
+    "mercredi": "10:00-18:30",
+    "jeudi": "11:00-20:00",
+    "vendredi": "09:30-19:00",
+    "samedi": "09:00-18:00",
+    "dimanche": "fermé"
+  },
+  "theme": {
+    "palette": "argile",
+    "pattern": "terrazzo"
+  },
+  "hero": {
+    "title": "Prenez soin",
+    "titleAccent": "de vos cheveux.",
+    "badge": "Coupe • Couleur • Coiffage • Soins • "
+  },
+  "services": {
+    "title": "Prestations",
+    "note": "Tarifs indicatifs.",
+    "items": [
+      {
+        "name": "Coupe & brushing femme",
+        "duration": "45 min",
+        "price": "dès 45 €",
+        "category": "Coupe"
+      },
+      {
+        "name": "Coupe homme",
+        "duration": "30 min",
+        "price": "dès 25 €",
+        "category": "Coupe"
+      },
+      {
+        "name": "Couleur",
+        "duration": "1 h 30",
+        "price": "dès 60 €",
+        "category": "Couleur"
+      },
+      {
+        "name": "Balayage",
+        "duration": "2 h",
+        "price": "dès 90 €",
+        "category": "Couleur"
+      },
+      {
+        "name": "Soin profond",
+        "duration": "30 min",
+        "price": "dès 25 €",
+        "category": "Soins"
+      },
+      {
+        "name": "Chignon",
+        "duration": "1 h",
+        "price": "dès 55 €",
+        "category": "Coiffage"
+      }
+    ]
+  },
+  "quote": {
+    "text": "Un salon où l'on prend le temps de vous écouter avant de toucher aux ciseaux.",
+    "author": "Lise, coiffeuse"
+  },
+  "team": [
+    {
+      "name": "Lise",
+      "role": "Coiffeuse"
+    },
+    {
+      "name": "Inès",
+      "role": "Coloriste"
+    }
+  ],
+  "legal": {
+    "company": "Commerce fictif, modèle de démonstration",
+    "legalForm": "Aucune",
+    "siret": "Sans objet",
+    "publisher": "Sandes Savarimuthu",
+    "host": {
+      "name": "Vercel Inc.",
+      "address": "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis"
+    },
+    "madeBy": "Site réalisé par Sandes Savarimuthu"
+  }
+}

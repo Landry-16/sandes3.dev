@@ -1,0 +1,166 @@
+{
+  "template": "fournil",
+  "draft": true,
+  "business": {
+    "name": "Maison Pétrin",
+    "tagline": "Boulangerie artisanale à Vincennes",
+    "schemaType": "Bakery",
+    "intro": "Commerce fictif, pour montrer toutes les sections du template. Pains au levain, viennoiseries pur beurre et gâteaux de saison, faits sur place chaque matin.",
+    "phone": "01 99 00 20 40",
+    "address": {
+      "street": "1 rue de l'Exemple",
+      "postcode": "94300",
+      "city": "Vincennes"
+    },
+    "instagram": "@maisonpetrin",
+    "access": "Métro Château de Vincennes, à 3 minutes à pied. Stationnement rue du Midi."
+  },
+  "hours": {
+    "lundi": "fermé",
+    "mardi": "7h-13h30, 15h30-20h",
+    "mercredi": "7h-13h30, 15h30-20h",
+    "jeudi": "7h-13h30, 15h30-20h",
+    "vendredi": "7h-20h",
+    "samedi": "7h-20h",
+    "dimanche": "7h30-13h30"
+  },
+  "hoursNote": "Fermeture annuelle du 10 au 31 août.",
+  "theme": {
+    "palette": "terracotta",
+    "display": "Fraunces"
+  },
+  "hero": {
+    "title": "Le pain d'ici,",
+    "titleAccent": "fait la nuit.",
+    "badge": "Pain au levain • Fait maison • Depuis 1998 • ",
+    "tag": [
+      "Sort du four",
+      "7h · 12h · 17h"
+    ]
+  },
+  "products": {
+    "title": "Ce qui sort du four",
+    "items": [
+      {
+        "name": "Baguette tradition",
+        "description": "Farine Label Rouge, longue fermentation, croûte bien dorée.",
+        "tag": "7h · 12h · 17h"
+      },
+      {
+        "name": "Croissant pur beurre",
+        "description": "Feuilletage maison, beurre AOP Charentes-Poitou.",
+        "tag": "Le matin"
+      },
+      {
+        "name": "Tarte aux fruits de saison",
+        "description": "Selon le marché : abricots l'été, pommes et poires l'hiver.",
+        "tag": "Week-end"
+      }
+    ]
+  },
+  "news": {
+    "kicker": "En ce moment",
+    "title": "Galette des rois : précommandez la vôtre",
+    "text": "Frangipane maison, 4, 6 ou 8 parts. À réserver 48 h à l'avance.",
+    "cta": "Commander",
+    "until": "31 janvier"
+  },
+  "story": {
+    "kicker": "Notre histoire",
+    "title": "Trois générations de boulangers",
+    "text": "Texte d'exemple. Tout a commencé en 1998, quand Paul a repris le fournil de la rue de l'Exemple. Depuis, la recette du pain au levain n'a pas changé.\n\nAujourd'hui, c'est sa fille qui pétrit chaque nuit, avec les mêmes farines du Gâtinais.",
+    "signature": "Claire, boulangère"
+  },
+  "gallery": {
+    "title": "Dans le fournil",
+    "photos": [
+      {
+        "alt": "Le fournil"
+      },
+      {
+        "alt": "Les pains"
+      },
+      {
+        "alt": "La vitrine"
+      },
+      {
+        "alt": "Viennoiseries"
+      },
+      {
+        "alt": "L'équipe"
+      }
+    ]
+  },
+  "reviews": {
+    "rating": 4.8,
+    "count": 212,
+    "items": [
+      {
+        "text": "Avis fictif : la meilleure baguette du quartier, toujours chaude à 17h.",
+        "author": "Exemple A.",
+        "date": "mars 2026"
+      },
+      {
+        "text": "Avis fictif : accueil adorable et gâteaux d'anniversaire superbes.",
+        "author": "Exemple B.",
+        "date": "février 2026"
+      },
+      {
+        "text": "Avis fictif : on vient de loin pour les croissants du dimanche.",
+        "author": "Exemple C.",
+        "date": "janvier 2026"
+      }
+    ]
+  },
+  "faq": [
+    {
+      "q": "Peut-on commander un gâteau ?",
+      "a": "Oui : passez ou appelez au moins 48 h à l'avance pour les gâteaux d'anniversaire et les grosses commandes."
+    },
+    {
+      "q": "Avez-vous du pain sans gluten ?",
+      "a": "Non, le fournil travaille la farine de blé toute la journée : nous ne pouvons pas garantir l'absence de gluten."
+    },
+    {
+      "q": "Acceptez-vous les tickets-restaurant ?",
+      "a": "Oui, en papier et en carte (Swile, Edenred, Up)."
+    },
+    {
+      "q": "Êtes-vous ouverts les jours fériés ?",
+      "a": "Oui, le matin, sauf le 1er mai."
+    }
+  ],
+  "practical": [
+    {
+      "icon": "€",
+      "title": "Paiement",
+      "text": "CB, espèces, sans contact, tickets-restaurant."
+    },
+    {
+      "icon": "A",
+      "title": "Accessibilité",
+      "text": "Entrée de plain-pied."
+    },
+    {
+      "icon": "P",
+      "title": "Stationnement",
+      "text": "Rue du Midi, 2 minutes à pied."
+    },
+    {
+      "icon": "T",
+      "title": "Commandes",
+      "text": "Gâteaux et grosses commandes par téléphone."
+    }
+  ],
+  "legal": {
+    "company": "Commerce fictif, modèle de démonstration",
+    "legalForm": "Aucune",
+    "siret": "Sans objet",
+    "publisher": "Sandes Savarimuthu",
+    "host": {
+      "name": "Vercel Inc.",
+      "address": "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis"
+    },
+    "madeBy": "Site réalisé par Sandes Savarimuthu"
+  }
+}

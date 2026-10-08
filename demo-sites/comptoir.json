@@ -1,0 +1,107 @@
+{
+  "template": "comptoir",
+  "draft": true,
+  "business": {
+    "name": "Trattoria Lucia",
+    "tagline": "Trattoria · Paris 11e",
+    "schemaType": "Restaurant",
+    "intro": "Pâtes fraîches, pizzas au feu de bois et dolci maison, midi et soir.",
+    "phone": "01 99 00 12 34",
+    "address": {
+      "street": "18 rue des Tilleuls",
+      "postcode": "75011",
+      "city": "Paris"
+    },
+    "access": "Conseillé le vendredi et le samedi soir. Groupes sur demande."
+  },
+  "hours": {
+    "lundi": "12:00-14:30, 19:00-22:30",
+    "mardi": "12:00-14:30, 19:00-22:30",
+    "mercredi": "12:00-14:30, 19:00-22:30",
+    "jeudi": "12:00-14:30, 19:00-22:30",
+    "vendredi": "12:00-14:30, 19:00-22:30",
+    "samedi": "12:00-14:30, 19:00-22:30",
+    "dimanche": "fermé"
+  },
+  "theme": {
+    "palette": "trattoria",
+    "pattern": "ecailles"
+  },
+  "hero": {
+    "title": "Trattoria",
+    "titleAccent": "Lucia.",
+    "badge": "Fatto in casa • Cucina italiana • "
+  },
+  "menu": {
+    "title": "La carta",
+    "intro": "Une carte courte, refaite chaque saison.",
+    "sections": [
+      {
+        "title": "Antipasti",
+        "items": [
+          {
+            "name": "Burrata e pomodori",
+            "description": "Tomates anciennes, basilic",
+            "price": "12 €"
+          },
+          {
+            "name": "Bruschetta",
+            "description": "Pain grillé, tomates, ail",
+            "price": "8 €"
+          }
+        ]
+      },
+      {
+        "title": "Piatti",
+        "items": [
+          {
+            "name": "Tagliatelle al ragù",
+            "description": "Sauce mijotée 6 heures",
+            "price": "16 €"
+          },
+          {
+            "name": "Pizza margherita",
+            "description": "Tomate, mozzarella, basilic",
+            "price": "13 €"
+          },
+          {
+            "name": "Risotto ai funghi",
+            "description": "Champignons, parmesan",
+            "price": "17 €"
+          },
+          {
+            "name": "Lasagne della casa",
+            "description": "Comme à la maison",
+            "price": "15 €"
+          }
+        ]
+      },
+      {
+        "title": "Dolci",
+        "items": [
+          {
+            "name": "Tiramisù",
+            "description": "Recette de la nonna",
+            "price": "7 €"
+          },
+          {
+            "name": "Panna cotta",
+            "description": "Coulis de fruits rouges",
+            "price": "6 €"
+          }
+        ]
+      }
+    ]
+  },
+  "legal": {
+    "company": "Commerce fictif, modèle de démonstration",
+    "legalForm": "Aucune",
+    "siret": "Sans objet",
+    "publisher": "Sandes Savarimuthu",
+    "host": {
+      "name": "Vercel Inc.",
+      "address": "440 N Barranca Ave #4133, Covina, CA 91723, États-Unis"
+    },
+    "madeBy": "Site réalisé par Sandes Savarimuthu"
+  }
+}
