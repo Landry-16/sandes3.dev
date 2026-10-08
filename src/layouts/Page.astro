@@ -1,0 +1,54 @@
+---
+import Base from "./Base.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { clientSites } from "../lib/clients";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <SiteHeader showClients={clientSites.length > 0} />
+  <main class="page" data-spot>
+    <slot />
+  </main>
+  <footer class="wrap page-footer">
+    <a href="/">Retour à l'accueil</a>
+    <a href="/#contact">Me contacter</a>
+  </footer>
+</Base>
+
+<script>
+  import { startLighting } from "../scripts/lighting";
+
+  startLighting();
+</script>
+
+<style>
+  .page {
+    position: relative;
+    min-height: 80svh;
+    padding-block: clamp(120px, 14vw, 180px) clamp(64px, 8vw, 120px);
+  }
+  .page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(640px circle at var(--spot-x, 30%) var(--spot-y, 10%), rgba(242, 242, 239, 0.07), transparent 70%);
+  }
+  .page-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding-block: 24px 40px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--ink-mute);
+  }
+</style>
