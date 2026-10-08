@@ -1,41 +1,72 @@
 ---
+import { Image } from "astro:assets";
 import type { ClientSite } from "../lib/clients";
+import { offerSteps, siteTemplates, templateFeatures, templateUrl } from "../data/templates";
 
 interface Props {
   sites: ClientSite[];
 }
 
 const { sites } = Astro.props;
+
+/** Delivered sites come first on the strip, then one demo per template. */
+const frames = [
+  ...sites.map((site) => ({
+    href: site.url,
+    title: site.name,
+    caption: ["En ligne", site.category, site.city].filter(Boolean).join(" · "),
+    remote: site.image,
+    local: undefined,
+    alt: `Aperçu du site de ${site.name}`,
+  })),
+  ...siteTemplates.map((t) => ({
+    href: templateUrl(t.slug),
+    title: t.trade,
+    caption: `Modèle · ${t.shop}, commerce fictif`,
+    remote: undefined,
+    local: t.image,
+    alt: `Modèle ${t.trade.toLowerCase()} : la page d'accueil de ${t.shop}`,
+  })),
+];
 ---
 
 <section class="clients" id="clients" aria-labelledby="clients-title">
   <div class="wrap head">
     <h2 id="clients-title">Sites clients</h2>
-    <p>Les sites que je livre aux commerçants. Ils apparaissent ici automatiquement à chaque livraison.</p>
+    <p>
+      Je crée des sites vitrines pour les commerces de proximité qui n'en ont pas encore. Chaque métier a son modèle, que
+      j'adapte ensuite au commerce. Ouvrez-les : ce sont de vrais sites.
+    </p>
   </div>
 
-  <div class="strip">
+  <div class="strip" data-strip>
     <ol class="frames">
       {
-        sites.map((site, i) => (
+        frames.map((frame, i) => (
           <li class="frame" data-develop>
-            <a href={site.url} rel="noopener" target="_blank">
+            <a href={frame.href} rel="noopener" target="_blank">
               <span class="exposure">
-                {site.image ? (
-                  <img src={site.image} alt={`Aperçu du site de ${site.name}`} loading="lazy" decoding="async" />
+                {frame.local ? (
+                  <Image src={frame.local} alt={frame.alt} widths={[480, 880]} sizes="(max-width: 760px) 80vw, 440px" loading="lazy" />
+                ) : frame.remote ? (
+                  <img src={frame.remote} alt={frame.alt} loading="lazy" decoding="async" />
                 ) : (
                   <span class="mock" aria-hidden="true">
-                    <span class="mock-title">{site.name}</span>
+                    <span class="mock-title">{frame.title}</span>
                     <span class="mock-line" />
                     <span class="mock-line short" />
-                    <span class="mock-button" />
                   </span>
                 )}
               </span>
               <span class="number" aria-hidden="true">{`${14 + i}A`}</span>
               <span class="label">
-                <span class="label-name">{site.name}</span>
-                <span class="label-kind">{[site.category, site.city].filter(Boolean).join(", ")}</span>
+                <span class="label-name">
+                  {frame.title}
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                    <path d="M8 16L16 8M9 8h7v7" />
+                  </svg>
+                </span>
+                <span class="label-kind">{frame.caption}</span>
               </span>
             </a>
           </li>
@@ -43,7 +74,45 @@ const { sites } = Astro.props;
       }
     </ol>
   </div>
+  <div class="wrap strip-controls">
+    <button type="button" class="step" data-strip-step="-1" aria-label="Sites précédents">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7" /></svg>
+    </button>
+    <button type="button" class="step" data-strip-step="1" aria-label="Sites suivants">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7" /></svg>
+    </button>
+  </div>
+
+  <div class="wrap offer">
+    <div>
+      <h3>Comment ça se passe</h3>
+      <ol class="steps">
+        {
+          offerSteps.map((step, i) => (
+            <li>
+              <span class="step-number">{String(i + 1).padStart(2, "0")}</span>
+              <span class="step-title">{step.title}</span>
+              <p>{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+    <aside class="features" data-lit data-spot>
+      <h3>Dans chaque site</h3>
+      <ul>
+        {templateFeatures.map((feature) => <li>{feature}</li>)}
+      </ul>
+      <a class="btn btn-light" href="#contact">Parler de votre commerce</a>
+    </aside>
+  </div>
 </section>
+
+<script>
+  import { startStrip } from "../scripts/strip";
+
+  startStrip();
+</script>
 
 <style>
   .clients {
@@ -64,13 +133,14 @@ const { sites } = Astro.props;
     font-size: clamp(64px, 9vw, 140px);
   }
   .head p {
-    max-width: 360px;
+    max-width: 400px;
     color: var(--ink-mute);
     font-size: 15px;
+    line-height: 1.6;
   }
 
+  /* Film strip */
   .strip {
-    --hole: 18px;
     position: relative;
     margin-inline: -4vw;
     padding: 44px calc(4vw + var(--gutter)) 56px;
@@ -83,39 +153,60 @@ const { sites } = Astro.props;
     background-repeat: repeat-x;
     transform: rotate(-1.6deg);
     overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
     scrollbar-width: none;
+  }
+  .strip::-webkit-scrollbar {
+    display: none;
   }
   .frames {
     display: flex;
     gap: 40px;
+    width: max-content;
     margin: 0;
     padding: 0;
     list-style: none;
-    width: max-content;
+  }
+  .frame {
+    scroll-snap-align: start;
+    scroll-margin-inline: calc(4vw + var(--gutter));
   }
   .frame a {
     display: grid;
     gap: 10px;
     width: clamp(260px, 32vw, 440px);
+    color: var(--ink);
     text-decoration: none;
   }
+
+  /* Each frame starts as a grey negative and develops into the real colours of the site. */
   .exposure {
     display: block;
     aspect-ratio: 16 / 10;
     overflow: hidden;
     background: #ecece8;
     filter: invert(1) grayscale(1) contrast(1.1);
-    transition: filter 1.6s var(--ease) var(--develop-delay, 0ms);
+    transition: filter 1.8s var(--ease) var(--develop-delay, 0ms);
   }
-  .frame:global(.is-developed) .exposure,
+  .frame:global(.is-developed) .exposure {
+    filter: invert(0) grayscale(0.15) contrast(1);
+  }
   .frame a:hover .exposure,
   .frame a:focus-visible .exposure {
-    filter: invert(0) grayscale(1) contrast(1.05);
+    filter: none;
+    transition-delay: 0ms;
+    transition-duration: 0.4s;
   }
-  .exposure img {
+  .exposure :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
+    transition: transform 0.6s var(--ease);
+  }
+  .frame a:hover .exposure :global(img) {
+    transform: scale(1.02);
   }
   .mock {
     display: grid;
@@ -131,18 +222,12 @@ const { sites } = Astro.props;
     line-height: 1;
   }
   .mock-line {
-    height: 6px;
     width: 70%;
+    height: 6px;
     background: #b9b9b4;
   }
   .mock-line.short {
     width: 45%;
-  }
-  .mock-button {
-    width: 110px;
-    height: 28px;
-    border-radius: 14px;
-    background: #141414;
   }
   .number {
     font-size: 11px;
@@ -154,12 +239,149 @@ const { sites } = Astro.props;
     gap: 2px;
   }
   .label-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--serif);
     font-size: 26px;
     line-height: 1.1;
   }
+  .label-name svg {
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  }
+  .frame a:hover .label-name svg,
+  .frame a:focus-visible .label-name svg {
+    opacity: 1;
+    transform: none;
+  }
   .label-kind {
     font-size: 13px;
     color: var(--ink-mute);
+  }
+
+  .strip-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .step {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.25s var(--ease), opacity 0.25s var(--ease);
+  }
+  .step:hover {
+    background: rgba(242, 242, 239, 0.1);
+  }
+  .step:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  /* Offer */
+  .offer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
+    gap: 56px clamp(40px, 6vw, 96px);
+    margin-top: clamp(72px, 9vw, 120px);
+  }
+  h3 {
+    margin-bottom: 28px;
+    font-size: 13px;
+    font-family: var(--sans);
+    font-weight: 500;
+    color: var(--ink-mute);
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px clamp(28px, 4vw, 56px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .steps li {
+    display: grid;
+    gap: 8px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .step-number {
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
+  }
+  .step-title {
+    font-family: var(--serif);
+    font-size: clamp(26px, 2.4vw, 34px);
+    line-height: 1.05;
+  }
+  .steps p {
+    color: var(--ink-mute);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .features {
+    --lit: 0.4;
+    align-self: start;
+    display: grid;
+    gap: 24px;
+    padding: 32px;
+    border: 1px solid var(--line);
+    background: radial-gradient(circle at var(--spot-x, 30%) var(--spot-y, 0%), rgba(242, 242, 239, calc(0.03 + var(--lit) * 0.07)), transparent 70%), var(--surface);
+  }
+  .features h3 {
+    margin: 0;
+  }
+  .features ul {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .features li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .features li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--ink);
+    box-shadow: 0 0 10px 2px rgba(242, 242, 239, 0.55);
+  }
+  .features .btn {
+    justify-self: start;
+  }
+
+  @media (max-width: 960px) {
+    .offer {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  @media (max-width: 620px) {
+    .steps {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .frame a {
+      width: 78vw;
+    }
   }
 </style>
