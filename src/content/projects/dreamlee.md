@@ -6,13 +6,17 @@ kind: Personnel
 team: Solo
 stack: [Tauri 2, React, Rust, SQLite, Supabase]
 status: En cours
-cover: ../../assets/projects/dreamlee/manuscript.jpg
-coverAlt: L'éditeur de manuscrit de Dreamlee, avec le plan du roman à gauche
+cover: ../../assets/projects/dreamlee/editor.jpg
+coverAlt: L'éditeur de manuscrit de Dreamlee, avec le plan du roman et la fiche de la scène
 gallery:
-  - src: ../../assets/projects/dreamlee/universe-map.jpg
-    alt: La carte de l'univers, qui relie personnages, lieux et objets
-  - src: ../../assets/projects/dreamlee/universe.jpg
-    alt: Les fiches de l'univers d'une œuvre
+  - src: ../../assets/projects/dreamlee/home.jpg
+    alt: L'accueil, avec la reprise d'écriture, l'objectif du jour et les projets
+  - src: ../../assets/projects/dreamlee/world-map.jpg
+    alt: L'éditeur de carte du monde, avec génération procédurale des régions
+  - src: ../../assets/projects/dreamlee/character.jpg
+    alt: La fiche d'un personnage, ses relations et sa présence par chapitre
+  - src: ../../assets/projects/dreamlee/focus.jpg
+    alt: Le mode focus, qui ne laisse que le texte et la session en cours
 featured: true
 order: 3
 ---
@@ -23,7 +27,7 @@ Une application de bureau pour Windows, macOS et Linux qui réunit tout ce dont 
 
 - Application **Tauri 2** : interface React, cœur en Rust, données stockées localement en SQLite.
 - Comptes optionnels avec Supabase, l'application reste pleinement utilisable hors ligne.
-- Carte de l'univers interactive : personnages, lieux et objets reliés par leurs liens.
+- Fiches de personnages avec relations, éditeur de cartes du monde et mode focus pour écrire sans distraction.
 - MVP fonctionnel, prochaine étape : les tests utilisateurs.
 
 Le dépôt est privé, seuls des aperçus sont présentés ici.
