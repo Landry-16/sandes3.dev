@@ -4,7 +4,7 @@ import { associative, education, experience, interests, objective, profileSummar
 import { cvFile, profile } from "../data/profile";
 import { getFeaturedProjects } from "../lib/projects";
 
-const projects = (await getFeaturedProjects()).slice(0, 5);
+const projects = (await getFeaturedProjects()).slice(0, 4);
 const site = Astro.site ? Astro.site.host : "";
 ---
 
@@ -146,11 +146,11 @@ const site = Astro.site ? Astro.site.host : "";
     max-width: 210mm;
     min-height: 297mm;
     margin: 0 auto 64px;
-    padding: 16mm 15mm;
+    padding: 14mm 14mm 12mm;
     background: #fbfbf9;
     color: var(--ink);
-    font-size: 10pt;
-    line-height: 1.5;
+    font-size: 9.2pt;
+    line-height: 1.45;
     color-scheme: light;
   }
   .sheet a {
@@ -163,11 +163,11 @@ const site = Astro.site ? Astro.site.host : "";
     justify-content: space-between;
     align-items: flex-end;
     gap: 12px 24px;
-    padding-bottom: 8mm;
+    padding-bottom: 6mm;
     border-bottom: 1px solid var(--ink);
   }
   h1 {
-    font-size: 40pt;
+    font-size: 34pt;
     line-height: 0.9;
   }
   .role {
@@ -190,7 +190,7 @@ const site = Astro.site ? Astro.site.host : "";
   .intro {
     display: grid;
     gap: 4px;
-    padding-block: 6mm;
+    padding-block: 4.5mm;
     border-bottom: 1px solid var(--rule);
     font-size: 10.5pt;
   }
@@ -201,17 +201,17 @@ const site = Astro.site ? Astro.site.host : "";
     display: grid;
     grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
     gap: 9mm;
-    padding-top: 6mm;
+    padding-top: 5mm;
   }
   h2 {
-    font-size: 17pt;
-    margin: 0 0 3mm;
+    font-size: 15pt;
+    margin: 0 0 2.5mm;
   }
   section + section {
-    margin-top: 6mm;
+    margin-top: 5mm;
   }
   .entry + .entry {
-    margin-top: 3.5mm;
+    margin-top: 3mm;
   }
   .period {
     font-size: 8.5pt;
@@ -262,6 +262,7 @@ const site = Astro.site ? Astro.site.host : "";
     margin: 0;
   }
   @media print {
+    :global(html),
     :global(body) {
       background: #fbfbf9;
     }
