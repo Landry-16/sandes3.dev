@@ -6,7 +6,7 @@ kind: École
 team: Équipe de 3
 stack: [C, TCP, poll(2)]
 featured: true
-order: 6
+order: 7
 ---
 
 Un clone de messagerie d'équipe : équipes, canaux, fils de discussion et messages privés. Le serveur gère tous les clients dans un seul processus avec `poll(2)`, sans threads ni `fork`.

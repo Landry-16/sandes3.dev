@@ -8,7 +8,7 @@ export const profile = {
   email: "dulnakasandes16@gmail.com",
   /** Printed on the PDF CV only, never rendered on the public pages. */
   phone: "07 72 32 88 10",
-  tagline: "Je construis des logiciels solides et des sites qui donnent confiance.",
+  tagline: "Je construis des produits fiables et faits pour durer.",
   availability: "Disponible pour des missions. Stage recherché de fin mars à fin août 2027.",
   links: {
     github: "https://github.com/Landry-16",

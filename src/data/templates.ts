@@ -33,21 +33,25 @@ export const offerSteps = [
   },
   {
     title: "Un devis",
-    text: "Le devis est validé avant que je commence. Pas de surprise ensuite.",
+    text: "Le devis est validé avant que je commence.",
   },
   {
     title: "La maquette",
-    text: "Le modèle du métier, adapté aux couleurs, aux textes et aux photos du commerce. Les retours se font sur le vrai site.",
+    text: "Création sur mesure, ou basée sur un de mes modèles : adapté aux couleurs, aux textes et aux photos du commerce.",
   },
   {
     title: "Le site vous appartient",
-    text: "Le commerce reçoit son propre projet, code et mode d'emploi compris. Il peut l'héberger où il veut et le confier à un autre développeur.",
+    text: "Le commerce reçoit son propre projet, code et mode d'emploi compris.",
+  },
+  {
+    title: "Rien à gérer",
+    text: "L'hébergement, la maintenance, et les mises à jours sont gérés pour vous.",
   },
 ];
 
 export const templateFeatures = [
-  "Horaires en direct : ouvert ou fermé, calculé à l'heure de Paris",
-  "Site statique, rapide, sans base de données à maintenir",
+  "Interface moderne et ergonomique",
+  "Horaires en direct : ouvert ou fermé",
   "Aucun cookie, donc aucun bandeau de consentement",
   "Mentions légales et données pour Google générées",
 ];

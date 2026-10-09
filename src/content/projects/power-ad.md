@@ -5,6 +5,8 @@ year: 2025
 kind: Personnel
 team: Solo
 stack: [PowerShell, C#, WPF, .NET 8]
+cover: ../../assets/projects/power-ad/power-ad.jpg
+coverAlt: Page d'acceuil d'active directory moderne
 status: En cours
 featured: true
 order: 5

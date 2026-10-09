@@ -6,7 +6,19 @@ kind: École
 team: Équipe Epitech
 stack: [C++20, CMake, SFML, ncurses, SDL2]
 featured: true
-order: 7
+cover: ../../assets/projects/arcade/arcade3.jpg
+coverAlt: Lib graphique SDL2
+gallery:
+  - src: ../../assets/projects/arcade/arcade1.jpg
+    alt: lib graphique SDL2 externe
+  - src: ../../assets/projects/arcade/arcade2.jpg
+    alt: lib graphique SFML
+  - src: ../../assets/projects/arcade/arcade4.jpg
+    alt: lib graphique ncurses
+  - src: ../../assets/projects/arcade/arcade5.jpg
+    alt: lib graphique ncurses externe
+
+order: 6
 ---
 
 Projet de deuxième année en C++20. Les jeux (Snake, Centipede) comme les bibliothèques graphiques (ncurses, SFML, SDL2) sont des bibliothèques partagées découvertes et chargées pendant l'exécution avec `dlopen`.

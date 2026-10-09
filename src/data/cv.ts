@@ -23,19 +23,18 @@ export const experience: CvEntry[] = [
     period: "Depuis 2026",
     title: "Développeur web freelance",
     place: "Indépendant, Paris",
-    summary: "Sites internet pour les commerces de proximité qui n'en ont pas encore, de la prospection à la livraison.",
+    summary: "Sites internet pour les commerces de proximité qui n'en ont pas encore.",
     details: [
-      "Conception de P-Finder, l'outil interne de prospection, de devis et de suivi des projets.",
-      "Templates par type de commerce, chaque client reçoit un projet autonome qu'il peut héberger lui-même.",
+      "Conception de P-Finder, mon outil interne de prospection, de devis et de suivi des projets.",
     ],
   },
   {
-    period: "Depuis 2026",
+    period: "Depuis janv. 2026",
     title: "Astek, assistant technique et pédagogique",
     place: "Epitech Paris",
     summary: "J'encadre les étudiants de première et deuxième année.",
     details: [
-      "Suivi des activités et aide technique sur les projets en C, C++ et web.",
+      "Suivi des activités et aide technique sur les projets en C, C++ et Python.",
       "Évaluation des projets et animation des soutenances.",
     ],
   },
@@ -43,13 +42,24 @@ export const experience: CvEntry[] = [
     period: "Sept. à déc. 2025",
     title: "Stagiaire",
     place: "Danone",
-    summary: "[Mission à préciser]",
+    summary: "Poste de développeur polyvalent participant à des projets concrets autour",
+    details: [
+      "Du développement ABAP",
+      "De l'intégration MuleSoft",
+      "De l'IA générative avec Python",
+      "De l'automatisation via Power Plateform"
+    ]
   },
   {
     period: "Juil. à sept. 2025",
     title: "Stagiaire",
     place: "AP-HP, Hôpital Robert-Debré",
-    summary: "[Mission à préciser]",
+    summary: "Poste de développeur polyvalent au sein de l'équipe informatique.",
+    details: [
+      "Mise en place d'outils d'automatisation de l'Active Directory",
+      "Conception et implémentation d'outils d'inventaire",
+      "Conception et implémentation d'outils de gestion du parc informatique"
+    ]
   },
 ];
 
@@ -58,7 +68,7 @@ export const education: CvEntry[] = [
     period: "2024 à 2029",
     title: "Programme Grande École",
     place: "Epitech Paris",
-    summary: "Formation par projets, en équipe : programmation système en C, C++ orienté objet, réseau, algorithmique et web. Actuellement en troisième année.",
+    summary: "Formation par projets, en équipe : programmation système en C, C++ orienté objet, réseau, algorithmique, web et intelligence artificielle. Actuellement en troisième année.",
   },
 ];
 
@@ -78,7 +88,7 @@ export const associative: CvEntry[] = [
 ];
 
 export const skills = [
-  { label: "Langages", value: "C, C++, Python, TypeScript, Rust" },
+  { label: "Langages", value: "C, C++, Python, TypeScript, Rust, Go" },
   { label: "Web", value: "Astro, React, Next.js, HTML, CSS, WebGL" },
   { label: "Outils", value: "Git, CMake, Make, Docker, Figma, Supabase, Vercel" },
   { label: "Langues", value: "Français et anglais, bilingue" },
