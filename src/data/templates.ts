@@ -1,10 +1,10 @@
 import type { ImageMetadata } from "astro";
-import fournil from "../assets/modeles/fournil.png";
-import comptoir from "../assets/modeles/comptoir.png";
-import atelier from "../assets/modeles/atelier.png";
-import chantier from "../assets/modeles/chantier.png";
-import cave from "../assets/modeles/cave.png";
-import bouquet from "../assets/modeles/bouquet.png";
+import fournil from "../assets/templates/fournil.png";
+import comptoir from "../assets/templates/comptoir.png";
+import atelier from "../assets/templates/atelier.png";
+import chantier from "../assets/templates/chantier.png";
+import cave from "../assets/templates/cave.png";
+import bouquet from "../assets/templates/bouquet.png";
 
 /** A P-Finder site template, shown with a fictional shop built by scripts/build-demo-sites.mjs. */
 export interface SiteTemplate {
@@ -24,7 +24,7 @@ export const siteTemplates: SiteTemplate[] = [
 ];
 
 /** Public path of a template demo. */
-export const templateUrl = (slug: string): string => `/modeles/${slug}/`;
+export const templateUrl = (slug: string): string => `/templates/${slug}/`;
 
 export const offerSteps = [
   {

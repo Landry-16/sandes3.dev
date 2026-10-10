@@ -3,8 +3,8 @@
  *
  * Each demo-sites/<template>.json holds the content of a fictional shop. The
  * script copies it into the P-Finder site generator, builds it under
- * /modeles/<template>/ into public/modeles/, then screenshots the first screen
- * into src/assets/modeles/<template>.png.
+ * /templates/<template>/ into public/templates/, then screenshots the first screen
+ * into src/assets/templates/<template>.png.
  *
  * Usage: PFINDER_SITES_DIR=../PFinder/sites npm run demos
  * The generator must have its dependencies installed (npm install in its folder).
@@ -21,8 +21,8 @@ if (!GENERATOR) {
   process.exit(1);
 }
 const generator = resolve(GENERATOR);
-const OUT_SITES = resolve("public/modeles");
-const OUT_SHOTS = resolve("src/assets/modeles");
+const OUT_SITES = resolve("public/templates");
+const OUT_SHOTS = resolve("src/assets/templates");
 const PORT = 4410;
 
 const templates = (await readdir("demo-sites")).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, ""));
@@ -35,7 +35,7 @@ async function build(template) {
   const result = spawnSync("npx", ["astro", "build"], {
     cwd: generator,
     stdio: "inherit",
-    env: { ...process.env, PF_CLIENT: client, PF_BASE: `/modeles/${template}/`, PF_OUT: join(OUT_SITES, template) },
+    env: { ...process.env, PF_CLIENT: client, PF_BASE: `/templates/${template}/`, PF_OUT: join(OUT_SITES, template) },
   });
   await rm(clientDir, { recursive: true, force: true });
   if (result.status !== 0) throw new Error(`build failed for ${template}`);
@@ -43,7 +43,7 @@ async function build(template) {
 
 const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml", ".woff2": "font/woff2", ".woff": "font/woff", ".webp": "image/webp", ".jpg": "image/jpeg", ".png": "image/png", ".txt": "text/plain" };
 
-/** Serves public/ so the demos load with their real /modeles/<template>/ paths. */
+/** Serves public/ so the demos load with their real /templates/<template>/ paths. */
 function serve() {
   const root = resolve("public");
   const server = createServer(async (req, res) => {
@@ -67,7 +67,7 @@ async function screenshot(list) {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   for (const template of list) {
-    await page.goto(`http://localhost:${PORT}/modeles/${template}/`, { waitUntil: "networkidle" });
+    await page.goto(`http://localhost:${PORT}/templates/${template}/`, { waitUntil: "networkidle" });
     await page.addStyleTag({ content: ".draft-banner{display:none!important}*{animation-play-state:paused!important}" });
     await page.waitForTimeout(800);
     await page.screenshot({ path: join(OUT_SHOTS, `${template}.png`) });
@@ -84,4 +84,4 @@ try {
 } finally {
   server.close();
 }
-console.log(`[demos] ${templates.length} template demo(s) built into public/modeles/.`);
+console.log(`[demos] ${templates.length} template demo(s) built into public/templates/.`);

@@ -8,13 +8,13 @@ const total = (await getVisibleProjects()).length;
 const pattern = ["large", "medium", "medium", "large", "small", "small", "small"] as const;
 ---
 
-<section class="projects" id="projets" data-spot aria-labelledby="projets-title">
+<section class="projects" id="projects" data-spot aria-labelledby="projects-title">
   <div class="wrap">
     <header class="head">
-      <h2 id="projets-title">Projets</h2>
+      <h2 id="projects-title">Projets</h2>
       <div class="aside">
         <p>Une sélection. Le code est ouvert quand le dépôt est public, les projets privés sont présentés en aperçu.</p>
-        <a class="all" href="/projets">Tout voir ({total})</a>
+        <a class="all" href="/projects">Tout voir ({total})</a>
       </div>
     </header>
     <div class="grid">

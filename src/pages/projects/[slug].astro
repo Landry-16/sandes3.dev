@@ -33,7 +33,7 @@ const facts = [
 <Page title={`${data.title}, Sandes Savarimuthu`} description={data.summary}>
   <article class="wrap project">
     <header class="head">
-      <p class="crumb"><a href="/projets">Projets</a></p>
+      <p class="crumb"><a href="/projects">Projets</a></p>
       <h1>{data.title}</h1>
       <p class="summary">{data.summary}</p>
       <div class="links">
@@ -88,7 +88,7 @@ const facts = [
 
     <nav class="next" aria-label="Projet suivant">
       <span>Projet suivant</span>
-      <a href={`/projets/${next.id}`}>{next.data.title}</a>
+      <a href={`/projects/${next.id}`}>{next.data.title}</a>
     </nav>
   </article>
 </Page>

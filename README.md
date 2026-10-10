@@ -55,12 +55,12 @@ La section « Sites clients » montre deux choses : les sites livrés et en lign
 
 ### Modèles
 
-Chaque modèle est un vrai site, généré par l'atelier de templates de P-Finder et hébergé ici sous `/modeles/<template>/` (`public/modeles/`, avec le bandeau « Maquette » et sans indexation). Le contenu fictif de chaque modèle est dans `demo-sites/<template>.json`, et la liste affichée dans `src/data/templates.ts`.
+Chaque modèle est un vrai site, généré par l'atelier de templates de P-Finder et hébergé ici sous `/templates/<template>/` (`public/templates/`, avec le bandeau « Maquette » et sans indexation). Le contenu fictif de chaque modèle est dans `demo-sites/<template>.json`, et la liste affichée dans `src/data/templates.ts`.
 
 Pour les reconstruire après une évolution des templates (l'atelier doit avoir ses dépendances installées) :
 
 ```bash
-PFINDER_SITES_DIR=../PFinder/sites npm run demos   # public/modeles/ et les captures src/assets/modeles/
+PFINDER_SITES_DIR=../PFinder/sites npm run demos   # public/templates/ et les captures src/assets/templates/
 ```
 
 ### Sites livrés

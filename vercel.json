@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/projets", "destination": "/projects", "permanent": true },
+    { "source": "/projets/:path*", "destination": "/projects/:path*", "permanent": true },
+    { "source": "/modeles", "destination": "/templates", "permanent": true },
+    { "source": "/modeles/:path*", "destination": "/templates/:path*", "permanent": true }
+  ]
+}
