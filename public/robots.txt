@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sandes3-dev.vercel.app/sitemap-index.xml
+Sitemap: https://sandess.dev/sitemap-index.xml
