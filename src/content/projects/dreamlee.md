@@ -18,7 +18,7 @@ gallery:
   - src: ../../assets/projects/dreamlee/focus.jpg
     alt: Le mode focus, qui ne laisse que le texte et la session en cours
 featured: true
-order: 3
+order: 6
 ---
 
 Une application de bureau pour Windows, macOS et Linux qui réunit tout ce dont un auteur a besoin : capturer ses idées, structurer son œuvre, rédiger, suivre sa progression et exporter son manuscrit.

@@ -9,13 +9,13 @@ repo: https://github.com/Landry-16/Path-Tracer_Sandes_copy
 links:
   - label: Galerie en couleur
     url: https://github.com/Landry-16/Path-Tracer_Sandes_copy#gallery
-cover: ../../assets/projects/path-tracer/lion.jpg
-coverAlt: Statue de lion en marbre, rendue par le path tracer
+cover: ../../assets/projects/path-tracer/angel.jpg
+coverAlt: Statue d'ange entourée de sphères réfléchissantes
 gallery:
   - src: ../../assets/projects/path-tracer/dragon.jpg
     alt: Tête de dragon éclairée par des sphères émissives
-  - src: ../../assets/projects/path-tracer/angel.jpg
-    alt: Statue d'ange entourée de sphères réfléchissantes
+  - src: ../../assets/projects/path-tracer/lion.jpg
+    alt: Statue de lion en marbre, rendue par le path tracer
   - src: ../../assets/projects/path-tracer/cornell-10spp.jpg
     alt: Boîte de Cornell à 10 échantillons par pixel, encore bruitée
   - src: ../../assets/projects/path-tracer/cornell-denoised.jpg

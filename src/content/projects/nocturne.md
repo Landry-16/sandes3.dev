@@ -22,8 +22,8 @@ gallery:
     alt: La dernière salle et la frise de six mètres de Pelez, à la fin du parcours
   - src: ../../assets/projects/nocturne/mobile.jpg
     alt: La galerie sur téléphone, avec le parcours en bas de l'écran
-featured: false
-order: 7.5
+featured: true
+order: 4
 ---
 
 <video src="/projects/nocturne/visite.mp4" poster="/projects/nocturne/visite.jpg" width="1280" height="720" controls muted loop playsinline preload="none" style="width: 100%; height: auto; border-radius: 4px;" aria-label="Vidéo : de l'écran d'accueil à la deuxième salle, puis l'ouverture d'un tableau en vue rapprochée"></video>

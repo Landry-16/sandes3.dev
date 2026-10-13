@@ -5,7 +5,7 @@ year: 2026
 kind: École
 team: Équipe de 3
 stack: [C, TCP, poll(2)]
-featured: true
+featured: false
 order: 7
 ---
 

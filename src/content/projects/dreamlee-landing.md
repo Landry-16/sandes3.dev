@@ -18,7 +18,7 @@ gallery:
   - src: ../../assets/projects/dreamlee-landing/dreamlee-landing3.jpg
     alt: Le générateur de cartes pour donner vie à votre monde
 featured: true
-order: 4
+order: 3
 ---
 
 En haut de page, le bureau d'un auteur en désordre : fiches, post-it, carte, manuscrit. À mesure qu'on défile, tout se range, jusqu'à la feuille blanche de l'inscription à la bêta. Chaque section fait essayer une vraie fonction du produit.

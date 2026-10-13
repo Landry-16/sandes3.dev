@@ -22,8 +22,8 @@ gallery:
     alt: La pyramide olfactive présentée en écailles photo teintées de carmin
   - src: ../../assets/projects/ecaille/mobile.jpg
     alt: L'ouverture du site sur téléphone
-featured: false
-order: 7.6
+featured: true
+order: 2
 ---
 
 <video src="/projects/ecaille/scroll.mp4" poster="/projects/ecaille/scroll.jpg" width="1280" height="720" controls muted loop playsinline preload="none" style="width: 100%; height: auto; border-radius: 4px;" aria-label="Vidéo : un défilement complet du site, du film d'ouverture jusqu'au flacon qui s'ouvre en écailles"></video>

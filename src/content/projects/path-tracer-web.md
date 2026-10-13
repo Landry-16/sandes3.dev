@@ -10,7 +10,7 @@ demo: https://landry-16.github.io/path-tracer-web/
 cover: ../../assets/projects/path-tracer-web/studio.jpg
 coverAlt: "La scène studio rendue par le path tracer WebGL, avec une sphère chromée, une sphère de verre et un bloc noir"
 featured: true
-order: 2
+order: 5
 ---
 
 Un path tracer Monte Carlo progressif qui tourne entièrement sur la carte graphique du visiteur. Chaque image ajoute un échantillon par pixel à une moyenne accumulée dans une texture en virgule flottante : l'image part du bruit et converge sous les yeux.
