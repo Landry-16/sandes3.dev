@@ -26,8 +26,8 @@ gallery:
     alt: Les modèles en thème nacre noire
   - src: ../../assets/projects/nacre/mobile.jpg
     alt: L'ouverture du site sur téléphone
-featured: false
-order: 7.4
+featured: true
+order: 3
 ---
 
 <video src="/projects/nacre/scroll.mp4" poster="/projects/nacre/scroll.jpg" width="1280" height="720" controls muted loop playsinline preload="none" style="width: 100%; height: auto; border-radius: 4px;" aria-label="Vidéo : un défilement de l'accueil, du film de nacre jusqu'aux modèles, en passant par la fabrication du site de Maison Pétrin"></video>
