@@ -5,8 +5,6 @@ year: 2026
 kind: Personnel
 team: Solo
 stack: [HTML, CSS, JavaScript]
-status: En cours
-repo: https://github.com/Landry-16/landry-landing-page
 demo: https://landry.sandess.dev
 demoLabel: Visiter le site
 cover: ../../assets/projects/landry-landing-page/cover.png

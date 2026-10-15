@@ -14,7 +14,8 @@ coverAlt: La barre Landry en mode Agir, avec un minuteur de 10 minutes et la vou
 gallery:
   - src: ../../assets/projects/landry/barre.png
     alt: "La barre Landry avec la recherche « rose » : applications, fichiers et notes, et l'aperçu du résultat à droite"
-order: 13
+order: 5
+featured: true
 ---
 
 Landry tient dans une barre au centre de l'écran. Elle sert à tout ce qu'on fait déjà avec le clavier : ouvrir une application, retrouver un fichier, faire un calcul, convertir une unité, coller un extrait, noter une idée, lancer un minuteur.
