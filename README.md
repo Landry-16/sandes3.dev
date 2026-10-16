@@ -33,6 +33,7 @@ summary: Une phrase qui présente le projet.
 year: 2026
 kind: École            # École, Personnel ou Freelance
 team: Équipe Epitech
+role: Ce que vous avez fait sur le projet   # optionnel : le rôle de Sandes, affiché sur la carte
 stack: [C++17, CMake]
 status: Terminé        # ou En cours
 repo: https://github.com/...     # absent = dépôt privé, aperçu seulement
@@ -45,17 +46,16 @@ visible: true          # false pour masquer le projet partout
 ```
 
 - **Masquer un projet** : `visible: false`.
-- **Le mettre en avant sur l'accueil** : `featured: true`. L'accueil est conçu pour sept projets.
+- **Le mettre en avant sur l'accueil** : `featured: true`. L'accueil montre six projets phares au plus, dans l'ordre de `order`. Un projet privé sans capture (`cover`) n'est pas mis en avant.
+- **Carte de projet** : nom, rôle (`role`), technologies, statut, et « code source » si `repo` est renseigné, sinon « dépôt privé ».
 - **Ajouter des images** : déposez-les dans `src/assets/projects/<projet>/` et référencez-les dans `cover` ou `gallery`. Elles sont optimisées au build.
 - Sans `cover`, une couverture typographique est générée.
 
-## Sites clients P-Finder
+## Modèles de démonstration
 
-La section « Sites clients » montre deux choses : les sites livrés et en ligne, puis un modèle par métier, construit avec un commerce fictif.
+La section « Modèles de démonstration » de l'accueil montre trois modèles, chacun avec un commerce fictif, et renvoie vers Nacre pour les demandes de site. Aucun site client n'y est affiché : un site client, un témoignage ou un logo ne s'ajoute qu'avec l'accord écrit du client, sous forme d'étude de cas.
 
-### Modèles
-
-Chaque modèle est un vrai site, généré par l'atelier de templates de P-Finder et hébergé ici sous `/templates/<template>/` (`public/templates/`, avec le bandeau « Maquette » et sans indexation). Le contenu fictif de chaque modèle est dans `demo-sites/<template>.json`, et la liste affichée dans `src/data/templates.ts`.
+Chaque modèle est un vrai site, généré par l'atelier de templates de P-Finder et hébergé ici sous `/templates/<template>/` (`public/templates/`, avec le bandeau « Maquette » et sans indexation). Le contenu fictif de chaque modèle est dans `demo-sites/<template>.json`, la liste dans `src/data/templates.ts`, et les trois modèles de l'accueil dans `homeTemplates`, dans le même fichier. Les noms, adresses et numéros des commerces fictifs ne doivent correspondre à aucun commerce réel.
 
 Pour les reconstruire après une évolution des templates (l'atelier doit avoir ses dépendances installées) :
 
@@ -63,24 +63,7 @@ Pour les reconstruire après une évolution des templates (l'atelier doit avoir 
 PFINDER_SITES_DIR=../PFinder/sites npm run demos   # public/templates/ et les captures src/assets/templates/
 ```
 
-### Sites livrés
-
-Les sites livrés avec P-Finder vivent chacun dans un dépôt de l'organisation GitHub `pfinder-sites`. Au build, `scripts/fetch-client-sites.mjs` liste ces dépôts et publie ceux qui :
-
-1. portent le topic GitHub `portfolio` ;
-2. ont une URL de site renseignée dans le champ « Website » du dépôt.
-
-Le nom, le type de commerce et la ville viennent du `site.json` du client, et la photo principale sert d'aperçu. Pour publier ou retirer un client, il suffit d'ajouter ou d'enlever le topic sur GitHub.
-
-Configuration (Vercel > Settings > Environment Variables) :
-
-| Variable | Rôle |
-| --- | --- |
-| `PFINDER_GITHUB_TOKEN` | Jeton GitHub en lecture seule (fine-grained : Contents et Metadata en lecture) sur l'organisation `pfinder-sites` |
-| `PFINDER_GITHUB_ORG` | Optionnel, `pfinder-sites` par défaut |
-| `SITE_URL` | URL publique du site |
-
-Sans jeton, seuls les modèles sont affichés. Le workflow `.github/workflows/rebuild.yml` relance un build chaque nuit via le secret `VERCEL_DEPLOY_HOOK`, pour que les nouveaux clients apparaissent sans commit.
+Après une reconstruction, vérifiez l'absence de tiret cadratin dans `public/templates/` : les templates en contenaient.
 
 ## CV
 
@@ -90,7 +73,7 @@ Le contenu du CV est dans `src/data/cv.ts` et `src/data/profile.ts`. Il alimente
 npm run build && npm run cv:pdf   # écrit public/cv-sandes-savarimuthu.pdf (Playwright requis)
 ```
 
-Le numéro de téléphone n'apparaît que dans le PDF.
+Le numéro de téléphone n'apparaît que dans le PDF. Après un changement du CV, régénérez le PDF pour qu'il reste identique à la page.
 
 ## Structure
 
@@ -98,11 +81,11 @@ Le numéro de téléphone n'apparaît que dans le PDF.
 src/
   components/      sections et cartes
   content/         projets en Markdown
-  data/            profil, CV, modèles et sites clients générés
+  data/            profil, CV, modèles
   layouts/         gabarits de page
   pages/           accueil, projets, CV, 404
   scripts/         rendu de l'accueil et éclairage au curseur
     tracer/        path tracer WebGL2 et shaders GLSL
 demo-sites/        contenu fictif des modèles de sites
-scripts/           sites clients, modèles, génération du CV
+scripts/           modèles, génération du CV
 ```

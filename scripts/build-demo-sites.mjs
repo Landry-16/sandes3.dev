@@ -1,5 +1,5 @@
 /**
- * Builds the P-Finder template demos shown in the "Sites clients" section.
+ * Builds the template demos (fictional shops) shown in the "Modèles de démonstration" section.
  *
  * Each demo-sites/<template>.json holds the content of a fictional shop. The
  * script copies it into the P-Finder site generator, builds it under

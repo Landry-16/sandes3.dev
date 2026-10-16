@@ -1,12 +1,15 @@
 ---
+import { Image } from "astro:assets";
+import portrait from "../assets/sandes.webp";
 import { cvFile, profile } from "../data/profile";
 ---
 
 <section class="contact" id="contact" data-spot aria-labelledby="contact-title">
   <div class="beam" aria-hidden="true"></div>
   <div class="wrap inner">
+    <Image class="portrait" src={portrait} alt="Portrait de Sandes Savarimuthu" widths={[144, 288]} sizes="144px" loading="lazy" />
     <h2 id="contact-title">Un projet ?</h2>
-    <p class="lede">Un site pour votre commerce, une mission, un stage à proposer : écrivez-moi</p>
+    <p class="lede">Un site vitrine, une mission, un stage à proposer : écrivez-moi.</p>
     <p class="email-row">
       <a class="email" href={`mailto:${profile.email}`}>{profile.email}</a>
       <button class="copy" type="button" data-copy={profile.email}>Copier l'adresse</button>
@@ -14,6 +17,7 @@ import { cvFile, profile } from "../data/profile";
     <ul class="links">
       <li><a href={profile.links.linkedin} rel="me noopener" target="_blank">LinkedIn</a></li>
       <li><a href={profile.links.github} rel="me noopener" target="_blank">GitHub</a></li>
+      <li><a href={profile.links.nacre}>Nacre, sites vitrines</a></li>
       <li><a href={cvFile} download>CV (PDF)</a></li>
     </ul>
   </div>
@@ -76,6 +80,17 @@ import { cvFile, profile } from "../data/profile";
   .inner {
     display: grid;
     gap: 28px;
+  }
+  .portrait {
+    width: 144px;
+    height: 144px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .beam {
+      animation: none;
+    }
   }
   h2 {
     font-style: italic;

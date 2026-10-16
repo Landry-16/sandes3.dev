@@ -1,9 +1,10 @@
 ---
 title: Landry
-summary: Un lanceur clavier pour Linux (GNOME) et Windows. On appuie sur un raccourci, une barre s'ouvre, on tape quelques lettres pour lancer, calculer, convertir ou noter.
+summary: "Un lanceur clavier pour Linux (GNOME) et Windows : un raccourci ouvre une barre pour lancer, calculer, convertir ou noter."
 year: 2026
 kind: Personnel
 team: Solo
+role: Conception et développement
 stack: [Rust, Tauri 2, Svelte 5]
 status: En cours
 repo: https://github.com/Landry-16/landry

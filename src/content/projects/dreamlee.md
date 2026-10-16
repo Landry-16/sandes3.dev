@@ -1,9 +1,10 @@
 ---
-title: Dreamlee
+title: "Dreamlee : bureau d'écriture"
 summary: Le bureau d'écriture tout-en-un pour les auteurs, de la première idée au manuscrit exporté.
 year: 2026
 kind: Personnel
 team: Solo
+role: Conception et développement
 stack: [Tauri 2, React, Rust, SQLite, Supabase]
 status: En cours
 cover: ../../assets/projects/dreamlee/home.jpg

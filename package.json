@@ -8,11 +8,9 @@
   "author": "Sandes Savarimuthu",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node scripts/fetch-client-sites.mjs",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "clients": "node scripts/fetch-client-sites.mjs",
     "cv:pdf": "node scripts/build-cv-pdf.mjs",
     "demos": "node scripts/build-demo-sites.mjs"
   },

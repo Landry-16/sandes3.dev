@@ -13,8 +13,7 @@ export interface CvEntry {
 
 export const profileSummary =
   "Étudiant en troisième année à Epitech Paris, je conçois des logiciels et des sites web avec rigueur. " +
-  "J'encadre des étudiants au quotidien et j'accompagne des commerçants dans la création de leur premier site : " +
-  "un développeur professionnel, compétent et humain.";
+  "J'encadre des étudiants au quotidien et je conçois des sites vitrines pour des indépendants, sous le nom Nacre.";
 
 export const objective = "Stage de développement, de fin mars à fin août 2027.";
 
@@ -23,14 +22,14 @@ export const experience: CvEntry[] = [
     period: "Depuis 2026",
     title: "Développeur web freelance",
     place: "Indépendant, Paris",
-    summary: "Sites internet pour les commerces de proximité qui n'en ont pas encore.",
+    summary: "Sites vitrines pour les indépendants de conseil et de services, sous le nom Nacre.",
     details: [
       "Conception de P-Finder, mon outil interne de prospection, de devis et de suivi des projets.",
     ],
   },
   {
     period: "Depuis janv. 2026",
-    title: "Astek, assistant technique et pédagogique",
+    title: "Assistant pédagogique et technique",
     place: "Epitech Paris",
     summary: "J'encadre les étudiants de première et deuxième année.",
     details: [
@@ -47,7 +46,7 @@ export const experience: CvEntry[] = [
       "Du développement ABAP",
       "De l'intégration MuleSoft",
       "De l'IA générative avec Python",
-      "De l'automatisation via Power Plateform"
+      "De l'automatisation via Power Platform"
     ]
   },
   {

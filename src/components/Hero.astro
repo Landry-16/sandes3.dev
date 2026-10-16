@@ -5,7 +5,7 @@ import { profile } from "../data/profile";
 ---
 
 <section class="hero" data-hero aria-labelledby="hero-name">
-  <Image class="poster" src={poster} alt="" widths={[640, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+  <Image class="poster" src={poster} alt="Rendu de mon path tracer : une pièce grise éclairée par le plafond, avec une sphère chromée, une sphère mate, une sphère de verre et un bloc noir" widths={[640, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
   <canvas class="scene" data-hero-canvas aria-hidden="true"></canvas>
   <div class="shade" aria-hidden="true"></div>
 
@@ -16,7 +16,7 @@ import { profile } from "../data/profile";
     <div class="intro">
       <p class="lede"><strong>{profile.role}.</strong> {profile.tagline}</p>
       <div class="actions">
-        <a class="btn btn-light" href="#contact">Me confier un projet</a>
+        <a class="btn btn-light" href={profile.links.nacreQuote}>Demander un devis pour un site</a>
         <a class="btn btn-ghost" href="#projects">Voir les projets</a>
       </div>
       <p class="availability"><span class="dot" aria-hidden="true"></span>{profile.availability}</p>
@@ -26,14 +26,26 @@ import { profile } from "../data/profile";
   <p class="hint" aria-hidden="true">
     <span class="hint-live">Bougez la souris pour déplacer la lumière. Ce rendu est calculé en direct par votre carte graphique.</span>
     <span class="hint-static">Rendu calculé par mon path tracer WebGL.</span>
+    <span class="hint-touch">Touchez l'image pour lancer le rendu en direct.</span>
   </p>
 </section>
 
 <script>
-  import { startHero } from "../scripts/hero";
-
   const root = document.querySelector<HTMLElement>("[data-hero]");
-  if (root) startHero(root);
+  const start = async (): Promise<void> => {
+    root!.classList.remove("is-static", "is-waiting");
+    const { startHero } = await import("../scripts/hero");
+    startHero(root!);
+  };
+  if (root) {
+    // With reduced motion the path tracer does not run: the rendered still stays.
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) root.classList.add("is-static");
+    // On touch screens the tracer would hold the processor while the page loads: it waits for a touch.
+    else if (matchMedia("(pointer: coarse)").matches) {
+      root.classList.add("is-static", "is-waiting");
+      root.addEventListener("pointerdown", start, { once: true });
+    } else start();
+  }
 </script>
 
 <style>
@@ -196,5 +208,13 @@ import { profile } from "../data/profile";
       grid-template-columns: minmax(0, 1fr);
       padding-top: 52svh;
     }
+  }
+  /* Touch screens: the still, until a touch starts the tracer. */
+  .hint-touch,
+  :global(.hero.is-waiting) .hint-static {
+    display: none;
+  }
+  :global(.hero.is-waiting) .hint-touch {
+    display: inline;
   }
 </style>

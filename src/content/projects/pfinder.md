@@ -16,4 +16,3 @@ P-Finder trouve les commerces de proximité qui n'ont pas de site, les trie, pr�
 - Base de données partagée sur Supabase, chaque membre de l'équipe a son compte.
 - Recherche via OpenStreetMap ou Google Places, avec tri manuel au clavier.
 - Chaque site client est créé dans son propre dépôt GitHub, à partir de templates par type de commerce, et reste autonome : le client peut l'héberger ailleurs.
-- Les sites livrés apparaissent automatiquement dans la section Sites clients de ce portfolio.

@@ -1,41 +1,22 @@
 ---
 import { Image } from "astro:assets";
-import type { ClientSite } from "../lib/clients";
-import { offerSteps, siteTemplates, templateFeatures, templateUrl } from "../data/templates";
+import { homeTemplates, templateUrl } from "../data/templates";
+import { profile } from "../data/profile";
 
-interface Props {
-  sites: ClientSite[];
-}
-
-const { sites } = Astro.props;
-
-/** Delivered sites come first on the strip, then one demo per template. */
-const frames = [
-  ...sites.map((site) => ({
-    href: site.url,
-    title: site.name,
-    caption: ["En ligne", site.category, site.city].filter(Boolean).join(" · "),
-    remote: site.image,
-    local: undefined,
-    alt: `Aperçu du site de ${site.name}`,
-  })),
-  ...siteTemplates.map((t) => ({
-    href: templateUrl(t.slug),
-    title: t.trade,
-    caption: `Modèle · ${t.shop}, commerce fictif`,
-    remote: undefined,
-    local: t.image,
-    alt: `Modèle ${t.trade.toLowerCase()} : la page d'accueil de ${t.shop}`,
-  })),
-];
+/** Three demo sites, all fictional shops: never shown as client work. */
+const frames = homeTemplates.map((t) => ({
+  href: templateUrl(t.slug),
+  title: `${t.trade}, commerce fictif`,
+  caption: `Modèle · ${t.shop}`,
+  image: t.image,
+  alt: `Modèle ${t.trade.toLowerCase()} : la page d'accueil de ${t.shop}, commerce fictif`,
+}));
 ---
 
-<section class="clients" id="clients" aria-labelledby="clients-title">
+<section class="demos" id="demos" aria-labelledby="demos-title">
   <div class="wrap head">
-    <h2 id="clients-title">Sites clients</h2>
-    <p>
-      Je crée des sites vitrines pour les commerces de proximité qui n'en ont pas encore. Voici des exemples de designs :
-    </p>
+    <h2 id="demos-title">Modèles de démonstration</h2>
+    <p>Commerces fictifs, pour montrer le travail.</p>
   </div>
 
   <div class="strip" data-strip>
@@ -45,17 +26,7 @@ const frames = [
           <li class="frame" data-develop>
             <a href={frame.href} rel="noopener" target="_blank">
               <span class="exposure">
-                {frame.local ? (
-                  <Image src={frame.local} alt={frame.alt} widths={[480, 880]} sizes="(max-width: 760px) 80vw, 440px" loading="lazy" />
-                ) : frame.remote ? (
-                  <img src={frame.remote} alt={frame.alt} loading="lazy" decoding="async" />
-                ) : (
-                  <span class="mock" aria-hidden="true">
-                    <span class="mock-title">{frame.title}</span>
-                    <span class="mock-line" />
-                    <span class="mock-line short" />
-                  </span>
-                )}
+                <Image src={frame.image} alt={frame.alt} widths={[480, 880]} sizes="(max-width: 760px) 80vw, 440px" loading="lazy" />
               </span>
               <span class="number" aria-hidden="true">{`${14 + i}A`}</span>
               <span class="label">
@@ -74,36 +45,22 @@ const frames = [
     </ol>
   </div>
   <div class="wrap strip-controls">
-    <button type="button" class="step" data-strip-step="-1" aria-label="Sites précédents">
+    <button type="button" class="step" data-strip-step="-1" aria-label="Modèles précédents">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7" /></svg>
     </button>
-    <button type="button" class="step" data-strip-step="1" aria-label="Sites suivants">
+    <button type="button" class="step" data-strip-step="1" aria-label="Modèles suivants">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7" /></svg>
     </button>
   </div>
 
-  <div class="wrap offer">
-    <div>
-      <h3>Comment ça se passe ?</h3>
-      <ol class="steps">
-        {
-          offerSteps.map((step, i) => (
-            <li>
-              <span class="step-number">{String(i + 1).padStart(2, "0")}</span>
-              <span class="step-title">{step.title}</span>
-              <p>{step.text}</p>
-            </li>
-          ))
-        }
-      </ol>
+  <div class="wrap freelance">
+    <p>
+      <strong>Freelance.</strong> Je conçois des sites vitrines pour les indépendants de conseil et de services, sous le nom Nacre : un prix total annoncé avant de commencer, et chaque étape validée avant la suivante.
+    </p>
+    <div class="freelance-actions">
+      <a class="btn btn-light" href={profile.links.nacreQuote}>Demander un devis pour un site</a>
+      <a class="btn btn-ghost" href={profile.links.nacre}>Découvrir Nacre</a>
     </div>
-    <aside class="features" data-lit data-spot>
-      <h3>Dans chaque site</h3>
-      <ul>
-        {templateFeatures.map((feature) => <li>{feature}</li>)}
-      </ul>
-      <a class="btn btn-light" href="#contact">Parler de votre commerce</a>
-    </aside>
   </div>
 </section>
 
@@ -114,7 +71,7 @@ const frames = [
 </script>
 
 <style>
-  .clients {
+  .demos {
     position: relative;
     padding-block: clamp(80px, 10vw, 140px);
     background: var(--black);
@@ -129,7 +86,7 @@ const frames = [
     margin-bottom: clamp(48px, 6vw, 80px);
   }
   h2 {
-    font-size: clamp(64px, 9vw, 140px);
+    font-size: clamp(48px, 7vw, 112px);
   }
   .head p {
     max-width: 400px;
@@ -207,27 +164,6 @@ const frames = [
   .frame a:hover .exposure :global(img) {
     transform: scale(1.02);
   }
-  .mock {
-    display: grid;
-    align-content: center;
-    gap: 12px;
-    height: 100%;
-    padding: 8%;
-    color: #141414;
-  }
-  .mock-title {
-    font-family: var(--serif);
-    font-size: clamp(26px, 2.6vw, 40px);
-    line-height: 1;
-  }
-  .mock-line {
-    width: 70%;
-    height: 6px;
-    background: #b9b9b4;
-  }
-  .mock-line.short {
-    width: 45%;
-  }
   .number {
     font-size: 11px;
     font-weight: 500;
@@ -286,99 +222,33 @@ const frames = [
     cursor: default;
   }
 
-  /* Offer */
-  .offer {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 380px);
-    gap: 56px clamp(40px, 6vw, 96px);
-    margin-top: clamp(72px, 9vw, 120px);
-  }
-  h3 {
-    margin-bottom: 28px;
-    font-size: 13px;
-    font-family: var(--sans);
-    font-weight: 500;
-    color: var(--ink-mute);
-  }
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 40px clamp(28px, 4vw, 56px);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .steps li {
-    display: grid;
-    gap: 8px;
-    padding-top: 18px;
+  /* Freelance */
+  .freelance {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px 48px;
+    margin-top: clamp(48px, 6vw, 80px);
+    padding-top: 32px;
     border-top: 1px solid var(--line);
   }
-  .step-number {
-    font-size: 12px;
+  .freelance p {
+    max-width: 52ch;
     color: var(--ink-mute);
-    font-variant-numeric: tabular-nums;
-  }
-  .step-title {
-    font-family: var(--serif);
-    font-size: clamp(26px, 2.4vw, 34px);
-    line-height: 1.05;
-  }
-  .steps p {
-    color: var(--ink-mute);
-    font-size: 15px;
     line-height: 1.6;
   }
-
-  .features {
-    --lit: 0.4;
-    align-self: start;
-    display: grid;
-    gap: 24px;
-    padding: 32px;
-    border: 1px solid var(--line);
-    background: radial-gradient(circle at var(--spot-x, 30%) var(--spot-y, 0%), rgba(242, 242, 239, calc(0.03 + var(--lit) * 0.07)), transparent 70%), var(--surface);
+  .freelance strong {
+    color: var(--ink);
+    font-weight: 500;
   }
-  .features h3 {
-    margin: 0;
-  }
-  .features ul {
-    display: grid;
-    gap: 14px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .features li {
-    position: relative;
-    padding-left: 20px;
-    font-size: 15px;
-    line-height: 1.5;
-  }
-  .features li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.6em;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--ink);
-    box-shadow: 0 0 10px 2px rgba(242, 242, 239, 0.55);
-  }
-  .features .btn {
-    justify-self: start;
+  .freelance-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
-  @media (max-width: 960px) {
-    .offer {
-      grid-template-columns: minmax(0, 1fr);
-    }
-  }
   @media (max-width: 620px) {
-    .steps {
-      grid-template-columns: minmax(0, 1fr);
-    }
     .frame a {
       width: 78vw;
     }
