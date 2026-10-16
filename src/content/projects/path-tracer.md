@@ -4,7 +4,6 @@ summary: Un moteur de rendu physique en C++17, avec deux intégrateurs, une BVH 
 year: 2026
 kind: École
 team: Équipe Epitech
-role: "[À COMPLÉTER : rôle de Sandes dans l'équipe]"
 stack: [C++17, CMake, SFML, ImGui, Open Image Denoise]
 repo: https://github.com/Landry-16/Path-Tracer_Sandes_copy
 links:
