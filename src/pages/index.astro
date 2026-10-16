@@ -2,30 +2,44 @@
 import Base from "../layouts/Base.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import Hero from "../components/Hero.astro";
+import Demos from "../components/Demos.astro";
 import FeaturedProjects from "../components/FeaturedProjects.astro";
-import ClientSites from "../components/ClientSites.astro";
 import Parcours from "../components/Parcours.astro";
 import Contact from "../components/Contact.astro";
-import { clientSites } from "../lib/clients";
 import { profile } from "../data/profile";
+
+const url = Astro.site?.href ?? "/";
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: profile.name,
+    jobTitle: profile.role,
+    url,
+    email: `mailto:${profile.email}`,
+    address: { "@type": "PostalAddress", addressLocality: profile.city, addressCountry: "FR" },
+    sameAs: [profile.links.linkedin, profile.links.github],
+  },
+];
 ---
 
 <Base
-  title={`${profile.name}, ${profile.role.toLowerCase()}`}
-  description="Développeur logiciel et web à Paris, en troisième année à Epitech. Sites pour commerçants, logiciels en C++, Rust et TypeScript."
+  title="Sandes Savarimuthu : développeur web et logiciel à Paris"
+  description="Développeur logiciel et web à Paris, sites vitrines pour indépendants, logiciels en C++, Rust et TypeScript. Disponible pour des missions."
+  schema={schema}
 >
   <SiteHeader />
   <main>
     <Hero />
+    <Demos />
     <FeaturedProjects />
-    <ClientSites sites={clientSites} />
     <Parcours />
     <Contact />
   </main>
 </Base>
 
 <script>
-  import { startDeveloping, startLighting } from "../scripts/lighting";
+  import { startLighting, startDeveloping } from "../scripts/lighting";
 
   startLighting();
   startDeveloping();

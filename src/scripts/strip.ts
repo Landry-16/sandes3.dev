@@ -17,7 +17,7 @@ export function startStrip(): void {
     button.addEventListener("click", () => {
       const frame = strip.querySelector<HTMLElement>(".frame");
       const distance = frame ? frame.offsetWidth + 40 : strip.clientWidth * 0.8;
-      strip.scrollBy({ left: Number(button.dataset.stripStep) * distance, behavior: "smooth" });
+      strip.scrollBy({ left: Number(button.dataset.stripStep) * distance, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
     });
   });
   strip.addEventListener("scroll", update, { passive: true });

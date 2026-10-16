@@ -15,6 +15,8 @@ const projects = defineCollection({
       year: z.number().int(),
       kind: z.enum(["École", "Personnel", "Freelance"]),
       team: z.string(),
+      /** What Sandes did on the project, shown on its card. */
+      role: z.string().optional(),
       stack: z.array(z.string()).min(1),
       status: z.enum(["Terminé", "En cours"]).default("Terminé"),
       repo: z.string().url().optional(),

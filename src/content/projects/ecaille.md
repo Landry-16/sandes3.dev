@@ -22,7 +22,7 @@ gallery:
     alt: La pyramide olfactive présentée en écailles photo teintées de carmin
   - src: ../../assets/projects/ecaille/mobile.jpg
     alt: L'ouverture du site sur téléphone
-featured: true
+featured: false
 order: 2
 ---
 

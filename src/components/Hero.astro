@@ -5,7 +5,7 @@ import { profile } from "../data/profile";
 ---
 
 <section class="hero" data-hero aria-labelledby="hero-name">
-  <Image class="poster" src={poster} alt="" widths={[640, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
+  <Image class="poster" src={poster} alt="Rendu de mon path tracer : une pièce grise éclairée par le plafond, avec une sphère chromée, une sphère mate, une sphère de verre et un bloc noir" widths={[640, 1280, 1920]} sizes="100vw" loading="eager" fetchpriority="high" />
   <canvas class="scene" data-hero-canvas aria-hidden="true"></canvas>
   <div class="shade" aria-hidden="true"></div>
 
@@ -16,7 +16,7 @@ import { profile } from "../data/profile";
     <div class="intro">
       <p class="lede"><strong>{profile.role}.</strong> {profile.tagline}</p>
       <div class="actions">
-        <a class="btn btn-light" href="#contact">Me confier un projet</a>
+        <a class="btn btn-light" href={profile.links.nacreQuote}>Demander un devis pour un site</a>
         <a class="btn btn-ghost" href="#projects">Voir les projets</a>
       </div>
       <p class="availability"><span class="dot" aria-hidden="true"></span>{profile.availability}</p>
@@ -33,7 +33,9 @@ import { profile } from "../data/profile";
   import { startHero } from "../scripts/hero";
 
   const root = document.querySelector<HTMLElement>("[data-hero]");
-  if (root) startHero(root);
+  // With reduced motion the path tracer does not run: the rendered still stays.
+  if (root && matchMedia("(prefers-reduced-motion: reduce)").matches) root.classList.add("is-static");
+  else if (root) startHero(root);
 </script>
 
 <style>

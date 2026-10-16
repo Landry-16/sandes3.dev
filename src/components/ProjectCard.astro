@@ -28,10 +28,11 @@ const sizes = size === "large" ? "(max-width: 900px) 100vw, 58vw" : "(max-width:
     <div class="caption">
       <h3>{data.title}</h3>
       <p class="summary">{data.summary}</p>
+      {data.role && <p class="role">{data.role}</p>}
       <p class="meta">
         <span>{data.stack.slice(0, 3).join(", ")}</span>
         <span class:list={["source", { public: Boolean(data.repo) }]}>
-          {data.status === "En cours" ? "En cours, " : ""}{sourceLabel(project).toLowerCase()}
+          {data.status}, {sourceLabel(project).toLowerCase()}
         </span>
       </p>
     </div>
@@ -39,6 +40,12 @@ const sizes = size === "large" ? "(max-width: 900px) 100vw, 58vw" : "(max-width:
 </article>
 
 <style>
+  .role {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--ink);
+  }
+
   .card {
     --lit: 0.35;
     min-width: 0;

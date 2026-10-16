@@ -9,7 +9,7 @@ repo: https://github.com/Landry-16/path-tracer-web
 demo: https://landry-16.github.io/path-tracer-web/
 cover: ../../assets/projects/path-tracer-web/studio.jpg
 coverAlt: "La scène studio rendue par le path tracer WebGL, avec une sphère chromée, une sphère de verre et un bloc noir"
-featured: true
+featured: false
 order: 6
 ---
 

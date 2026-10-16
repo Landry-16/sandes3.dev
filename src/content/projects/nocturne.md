@@ -4,6 +4,7 @@ summary: Une visite de nuit en 3D à travers quatre salles et douze tableaux du 
 year: 2026
 kind: Personnel
 team: Solo
+role: Conception et développement
 stack: [TypeScript, Three.js, WebGL, Vite]
 demo: https://gallery.sandess.dev
 demoLabel: Visiter la galerie

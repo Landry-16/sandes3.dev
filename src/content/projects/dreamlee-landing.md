@@ -1,9 +1,10 @@
 ---
-title: Dreamlee, page d'accueil
+title: "Dreamlee : page de lancement"
 summary: La page de lancement de Dreamlee, où le bureau d'un auteur se range à mesure qu'on défile.
 year: 2026
 kind: Personnel
 team: Solo
+role: Conception et développement
 stack: [Astro, TypeScript, Playwright, Vitest]
 repo: https://github.com/Landry-16/Dreamlee-landing-page
 demo: https://dreamlee.vercel.app/

@@ -6,7 +6,7 @@ import chantier from "../assets/templates/chantier.png";
 import cave from "../assets/templates/cave.png";
 import bouquet from "../assets/templates/bouquet.png";
 
-/** A P-Finder site template, shown with a fictional shop built by scripts/build-demo-sites.mjs. */
+/** A site template, shown with a fictional shop built by scripts/build-demo-sites.mjs. */
 export interface SiteTemplate {
   slug: string;
   trade: string;
@@ -26,32 +26,5 @@ export const siteTemplates: SiteTemplate[] = [
 /** Public path of a template demo. */
 export const templateUrl = (slug: string): string => `/templates/${slug}/`;
 
-export const offerSteps = [
-  {
-    title: "Un appel",
-    text: "On parle du commerce et de ce que ses clients cherchent en ligne : horaires, carte, prestations, accès.",
-  },
-  {
-    title: "Un devis",
-    text: "Le devis est validé avant que je commence.",
-  },
-  {
-    title: "La maquette",
-    text: "Création sur mesure, ou basée sur un de mes modèles : adapté aux couleurs, aux textes et aux photos du commerce.",
-  },
-  {
-    title: "Le site vous appartient",
-    text: "Le commerce reçoit son propre projet, code et mode d'emploi compris.",
-  },
-  {
-    title: "Rien à gérer",
-    text: "L'hébergement, la maintenance, et les mises à jours sont gérés pour vous.",
-  },
-];
-
-export const templateFeatures = [
-  "Interface moderne et ergonomique",
-  "Horaires en direct : ouvert ou fermé",
-  "Aucun cookie, donc aucun bandeau de consentement",
-  "Mentions légales et données pour Google générées",
-];
+/** The three demos shown on the home page, in this order. */
+export const homeTemplates: SiteTemplate[] = siteTemplates.slice(0, 3);

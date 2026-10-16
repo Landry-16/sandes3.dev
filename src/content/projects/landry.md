@@ -4,6 +4,7 @@ summary: Un lanceur clavier pour Linux (GNOME) et Windows. On appuie sur un racc
 year: 2026
 kind: Personnel
 team: Solo
+role: Conception et développement
 stack: [Rust, Tauri 2, Svelte 5]
 status: En cours
 repo: https://github.com/Landry-16/landry
