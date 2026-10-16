@@ -26,16 +26,26 @@ import { profile } from "../data/profile";
   <p class="hint" aria-hidden="true">
     <span class="hint-live">Bougez la souris pour déplacer la lumière. Ce rendu est calculé en direct par votre carte graphique.</span>
     <span class="hint-static">Rendu calculé par mon path tracer WebGL.</span>
+    <span class="hint-touch">Touchez l'image pour lancer le rendu en direct.</span>
   </p>
 </section>
 
 <script>
-  import { startHero } from "../scripts/hero";
-
   const root = document.querySelector<HTMLElement>("[data-hero]");
-  // With reduced motion the path tracer does not run: the rendered still stays.
-  if (root && matchMedia("(prefers-reduced-motion: reduce)").matches) root.classList.add("is-static");
-  else if (root) startHero(root);
+  const start = async (): Promise<void> => {
+    root!.classList.remove("is-static", "is-waiting");
+    const { startHero } = await import("../scripts/hero");
+    startHero(root!);
+  };
+  if (root) {
+    // With reduced motion the path tracer does not run: the rendered still stays.
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) root.classList.add("is-static");
+    // On touch screens the tracer would hold the processor while the page loads: it waits for a touch.
+    else if (matchMedia("(pointer: coarse)").matches) {
+      root.classList.add("is-static", "is-waiting");
+      root.addEventListener("pointerdown", start, { once: true });
+    } else start();
+  }
 </script>
 
 <style>
@@ -198,5 +208,13 @@ import { profile } from "../data/profile";
       grid-template-columns: minmax(0, 1fr);
       padding-top: 52svh;
     }
+  }
+  /* Touch screens: the still, until a touch starts the tracer. */
+  .hint-touch,
+  :global(.hero.is-waiting) .hint-static {
+    display: none;
+  }
+  :global(.hero.is-waiting) .hint-touch {
+    display: inline;
   }
 </style>
