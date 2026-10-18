@@ -104,7 +104,6 @@ const fr = {
     download: "Télécharger le PDF",
     open: "Ouvrir le PDF",
     alt: "CV de Sandes Savarimuthu, développeur full stack : expérience, projets, formation, compétences et engagements",
-    note: "",
   },
   projects: {
     title: "Projets, Sandes Savarimuthu",
@@ -186,7 +185,7 @@ const en: typeof fr = {
     copied: "Address copied",
     copyFail: "Could not copy, select the address",
     nacre: "Nacre, showcase websites",
-    cv: "CV (PDF, in French)",
+    cv: "CV (PDF)",
   },
   cv: {
     title: "CV, Sandes Savarimuthu",
@@ -195,7 +194,6 @@ const en: typeof fr = {
     download: "Download the PDF",
     open: "Open the PDF",
     alt: "CV of Sandes Savarimuthu, full stack developer: experience, projects, education, skills and involvement",
-    note: "My CV is written in French. I am bilingual in French and English.",
   },
   projects: {
     title: "Projects, Sandes Savarimuthu",

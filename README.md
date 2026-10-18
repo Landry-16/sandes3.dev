@@ -67,7 +67,7 @@ Après une reconstruction, vérifiez l'absence de tiret cadratin dans `public/te
 
 ## CV
 
-Le CV est le PDF `public/cv-sandes-savarimuthu.pdf` : la page `/cv` en affiche l'image (`src/assets/cv/page-1.png`, à régénérer avec `pdftoppm -r 220 -png public/cv-sandes-savarimuthu.pdf src/assets/cv/page`) et les boutons le téléchargent. `src/data/cv.ts` alimente la section Parcours, en français et en anglais.
+Le CV est le PDF `public/cv-sandes-savarimuthu.pdf` : la page `/cv` en affiche l'image (`src/assets/cv/page-1.png`, à régénérer avec `pdftoppm -r 220 -png public/cv-sandes-savarimuthu.pdf src/assets/cv/page`) et les boutons le téléchargent. Le CV anglais `public/cv-sandes-savarimuthu-en.pdf` et son image viennent de `scripts/cv/cv-en.html` : `npm run cv:en` (Playwright et pdftoppm requis), à relancer après chaque modification. `src/data/cv.ts` alimente la section Parcours, en français et en anglais.
 
 Version anglaise sous `/en/` : textes de l'interface dans `src/lib/i18n.ts`, projets traduits dans `src/content/projects-en/` (même nom de fichier que le projet français), liens internes préfixés par `src/middleware.ts`.
 

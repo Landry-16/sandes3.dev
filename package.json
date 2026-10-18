@@ -11,7 +11,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "demos": "node scripts/build-demo-sites.mjs"
+    "demos": "node scripts/build-demo-sites.mjs",
+    "cv:en": "node scripts/build-cv-en.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",

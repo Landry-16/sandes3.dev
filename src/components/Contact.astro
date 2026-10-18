@@ -1,11 +1,13 @@
 ---
 import { Image } from "astro:assets";
 import portrait from "../assets/sandes.webp";
-import { cvFile, profile } from "../data/profile";
+import { cvFile as cvFileFr, cvFileEn, profile } from "../data/profile";
 import { langOf, t } from "../lib/i18n";
 
 const w = t(Astro.url).contact;
-const nacre = langOf(Astro.url) === "en" ? "https://nacre.sandess.dev/en/" : profile.links.nacre;
+const english = langOf(Astro.url) === "en";
+const nacre = english ? "https://nacre.sandess.dev/en/" : profile.links.nacre;
+const cvFile = english ? cvFileEn : cvFileFr;
 ---
 
 <section class="contact" id="contact" data-spot aria-labelledby="contact-title">

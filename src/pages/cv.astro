@@ -1,17 +1,21 @@
 ---
 /**
- * The CV supplied as a PDF (public/cv-sandes-savarimuthu.pdf), shown as an image of its page so
- * it reads the same on every browser, phone included, with the PDF to download or open.
- * src/assets/cv/page-1.png is that page: render it again when the PDF changes
+ * The CV as a PDF, shown as an image of its page so it reads the same on every browser, phone
+ * included, with the PDF to download or open. French: the PDF supplied as is, its image
+ * src/assets/cv/page-1.png to render again when it changes
  * (pdftoppm -r 220 -png public/cv-sandes-savarimuthu.pdf src/assets/cv/page).
+ * English: both come from npm run cv:en.
  */
 import { Image } from "astro:assets";
 import Page from "../layouts/Page.astro";
-import sheet from "../assets/cv/page-1.png";
-import { cvFile } from "../data/profile";
-import { t } from "../lib/i18n";
+import sheetFr from "../assets/cv/page-1.png";
+import sheetEn from "../assets/cv/page-en.png";
+import { cvFile as cvFileFr, cvFileEn } from "../data/profile";
+import { langOf, t } from "../lib/i18n";
 
 const w = t(Astro.url).cv;
+const english = langOf(Astro.url) === "en";
+const [sheet, cvFile] = english ? [sheetEn, cvFileEn] : [sheetFr, cvFileFr];
 ---
 
 <Page title={w.title} description={w.description}>
@@ -22,7 +26,6 @@ const w = t(Astro.url).cv;
         <a class="btn btn-light" href={cvFile} download>{w.download}</a>
         <a class="btn btn-ghost" href={cvFile} target="_blank" rel="noopener">{w.open}</a>
       </div>
-      {w.note && <p class="note">{w.note}</p>}
     </header>
     <a class="sheet" href={cvFile} target="_blank" rel="noopener" data-lit>
       <Image src={sheet} alt={w.alt} widths={[600, 900, 1300, 1818]} sizes="(max-width: 900px) 100vw, 820px" loading="eager" />
@@ -50,11 +53,6 @@ const w = t(Astro.url).cv;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
-  }
-  .note {
-    margin: 0;
-    color: var(--ink-mute);
-    font-size: 14px;
   }
   .sheet {
     display: block;

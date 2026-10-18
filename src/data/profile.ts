@@ -29,3 +29,6 @@ export const profileEn = {
 
 /** The CV supplied as a PDF: "Voir le CV en ligne" shows it, the download buttons serve it. */
 export const cvFile = "/cv-sandes-savarimuthu.pdf";
+
+/** The English CV, printed from scripts/cv/cv-en.html (npm run cv:en). */
+export const cvFileEn = "/cv-sandes-savarimuthu-en.pdf";
