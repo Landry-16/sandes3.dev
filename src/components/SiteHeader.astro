@@ -1,18 +1,22 @@
 ---
+import { switchPath, t } from "../lib/i18n";
+
+const w = t(Astro.url);
 const links = [
-  { href: "/#demos", label: "Démonstrations" },
-  { href: "/#projects", label: "Projets" },
-  { href: "/#background", label: "Parcours" },
-  { href: "/cv", label: "CV" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/#demos", label: w.nav.demos },
+  { href: "/#projects", label: w.nav.projects },
+  { href: "/#background", label: w.nav.background },
+  { href: "/cv", label: w.nav.cv },
+  { href: "/#contact", label: w.nav.contact },
 ];
 ---
 
 <header class="site-header">
   <a class="brand" href="/">S. Savarimuthu</a>
-  <nav aria-label="Navigation principale">
+  <nav aria-label={w.nav.label}>
     <ul>
       {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      <li><a href={switchPath(Astro.url)} hreflang={w.other.lang} lang={w.other.lang} aria-label={w.other.label}>{w.other.short}</a></li>
     </ul>
   </nav>
 </header>

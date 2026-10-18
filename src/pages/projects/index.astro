@@ -2,27 +2,31 @@
 import Page from "../../layouts/Page.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import { getVisibleProjects } from "../../lib/projects";
+import { langOf, t, term } from "../../lib/i18n";
 
-const projects = await getVisibleProjects();
+const lang = langOf(Astro.url);
+const w = t(Astro.url).projects;
+
+const projects = await getVisibleProjects(lang);
 const kinds = ["École", "Personnel", "Freelance"] as const;
 const counts = Object.fromEntries(kinds.map((k) => [k, projects.filter((p) => p.data.kind === k).length]));
 ---
 
-<Page title="Projets, Sandes Savarimuthu" description="Tous les projets de Sandes Savarimuthu : moteurs de rendu, réseau, applications web et outils.">
+<Page title={w.title} description={w.description}>
   <div class="wrap">
     <header class="head">
-      <h1>Tous les projets</h1>
-      <p>{projects.length} projets, d'Epitech, personnels ou réalisés pour mon activité freelance.</p>
+      <h1>{w.h1}</h1>
+      <p>{w.lede(projects.length)}</p>
     </header>
 
-    <div class="filters" role="group" aria-label="Filtrer les projets">
-      <button type="button" data-filter="all" aria-pressed="true">Tous ({projects.length})</button>
+    <div class="filters" role="group" aria-label={w.filter}>
+      <button type="button" data-filter="all" aria-pressed="true">{w.all} ({projects.length})</button>
       {
         kinds
           .filter((k) => counts[k] > 0)
           .map((k) => (
             <button type="button" data-filter={k} aria-pressed="false">
-              {k} ({counts[k]})
+              {term(lang, k)} ({counts[k]})
             </button>
           ))
       }

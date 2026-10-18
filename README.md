@@ -67,13 +67,9 @@ Après une reconstruction, vérifiez l'absence de tiret cadratin dans `public/te
 
 ## CV
 
-Le contenu du CV est dans `src/data/cv.ts` et `src/data/profile.ts`. Il alimente la section Parcours, la page `/cv` et le PDF.
+Le CV est le PDF `public/cv-sandes-savarimuthu.pdf` : la page `/cv` en affiche l'image (`src/assets/cv/page-1.png`, à régénérer avec `pdftoppm -r 220 -png public/cv-sandes-savarimuthu.pdf src/assets/cv/page`) et les boutons le téléchargent. `src/data/cv.ts` alimente la section Parcours, en français et en anglais.
 
-```bash
-npm run build && npm run cv:pdf   # écrit public/cv-sandes-savarimuthu.pdf (Playwright requis)
-```
-
-Le numéro de téléphone n'apparaît que dans le PDF. Après un changement du CV, régénérez le PDF pour qu'il reste identique à la page.
+Version anglaise sous `/en/` : textes de l'interface dans `src/lib/i18n.ts`, projets traduits dans `src/content/projects-en/` (même nom de fichier que le projet français), liens internes préfixés par `src/middleware.ts`.
 
 ## Structure
 

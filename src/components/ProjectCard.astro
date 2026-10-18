@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import Cover from "./Cover.astro";
-import { sourceLabel, type Project } from "../lib/projects";
+import type { Project } from "../lib/projects";
+import { langOf, t, term } from "../lib/i18n";
 
 interface Props {
   project: Project;
@@ -10,6 +11,8 @@ interface Props {
 
 const { project, size = "medium" } = Astro.props;
 const { data } = project;
+const lang = langOf(Astro.url);
+const w = t(Astro.url).card;
 const widths = size === "large" ? [640, 960, 1280, 1600] : [480, 720, 960];
 const sizes = size === "large" ? "(max-width: 900px) 100vw, 58vw" : "(max-width: 900px) 100vw, 40vw";
 ---
@@ -32,7 +35,7 @@ const sizes = size === "large" ? "(max-width: 900px) 100vw, 58vw" : "(max-width:
       <p class="meta">
         <span>{data.stack.slice(0, 3).join(", ")}</span>
         <span class:list={["source", { public: Boolean(data.repo) }]}>
-          {data.status}, {sourceLabel(project).toLowerCase()}
+          {term(lang, data.status)}, {data.repo ? w.source : w.private}
         </span>
       </p>
     </div>

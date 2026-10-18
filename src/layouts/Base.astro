@@ -3,6 +3,7 @@ import "@fontsource/instrument-serif/400.css";
 import "@fontsource/instrument-serif/400-italic.css";
 import "@fontsource-variable/geologica";
 import "../styles/global.css";
+import { switchPath, t } from "../lib/i18n";
 
 interface Props {
   title: string;
@@ -15,23 +16,30 @@ interface Props {
 const { title, description, image = "/og.jpg", schema = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
+const w = t(Astro.url);
+// The same page in both languages, for search engines.
+const other = new URL(switchPath(Astro.url), Astro.site);
+const [frUrl, enUrl] = w.lang === "en" ? [other, canonical] : [canonical, other];
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={w.lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="fr" href={frUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={frUrl} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#000000" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale" content={w.locale} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

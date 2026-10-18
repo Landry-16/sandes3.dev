@@ -1,4 +1,6 @@
 ---
+import { t } from "../lib/i18n";
+
 /**
  * Typographic cover for projects without screenshots (mostly private repositories):
  * the title set large in a dark plate, lit by a soft light pool whose position
@@ -11,13 +13,14 @@ interface Props {
 }
 
 const { title, slug, stack } = Astro.props;
+const label = t(Astro.url).cover(title);
 let hash = 0;
 for (const ch of slug) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
 const x = 20 + (hash % 60);
 const y = 15 + ((hash >> 7) % 50);
 ---
 
-<div class="cover" style={`--pool-x:${x}%;--pool-y:${y}%`} role="img" aria-label={`Aperçu de ${title}`}>
+<div class="cover" style={`--pool-x:${x}%;--pool-y:${y}%`} role="img" aria-label={label}>
   <span class="cover-title" aria-hidden="true">{title}</span>
   <span class="cover-stack" aria-hidden="true">{stack.slice(0, 3).join(", ")}</span>
 </div>

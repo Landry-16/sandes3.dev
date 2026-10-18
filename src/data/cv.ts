@@ -1,6 +1,6 @@
 /**
- * CV content. The same data feeds the "Parcours" section, the /cv page
- * and the PDF generated from it (npm run cv:pdf).
+ * Background shown in the "Parcours" section, in French and English. It follows the CV
+ * supplied as a PDF (public/cv-sandes-savarimuthu.pdf): update both together.
  */
 
 export interface CvEntry {
@@ -11,86 +11,130 @@ export interface CvEntry {
   details?: string[];
 }
 
-export const profileSummary =
-  "Étudiant en troisième année à Epitech Paris, je conçois des logiciels et des sites web avec rigueur. " +
-  "J'encadre des étudiants au quotidien et je conçois des sites vitrines pour des indépendants, sous le nom Nacre.";
+const fr = {
+  experience: [
+    {
+      period: "Depuis 2026",
+      title: "Développeur web freelance",
+      place: "Indépendant, Paris",
+      summary:
+        "Création de sites vitrines pour des commerces de proximité : devis, maquette sur mesure ou à partir de modèles, remise du code et du mode d'emploi, puis hébergement et maintenance.",
+      details: [
+        "Sites sans bandeau de cookies, avec horaires d'ouverture en direct et mentions légales générées.",
+        "Conception de P-Finder, outil interne de prospection, de devis et de suivi de projets clients.",
+      ],
+    },
+    {
+      period: "Depuis mars 2026",
+      title: "Assistant technique et pédagogique",
+      place: "Epitech Paris",
+      summary: "Suivi technique des projets d'étudiants de 1re et 2e année en C, C++ et Python.",
+      details: ["Évaluation des projets et animation des soutenances."],
+    },
+    {
+      period: "Sept. à déc. 2025",
+      title: "Stagiaire développeur polyvalent",
+      place: "Danone",
+      summary: "Développement en ABAP et intégration MuleSoft sur des projets concrets.",
+      details: ["IA générative en Python et automatisation de processus avec Power Platform."],
+    },
+    {
+      period: "Juil. à sept. 2025",
+      title: "Stagiaire, équipe informatique",
+      place: "AP-HP, hôpital Robert-Debré",
+      summary: "Automatisation de tâches de gestion dans l'Active Directory.",
+      details: ["Conception et implémentation d'outils d'inventaire et de gestion du parc informatique."],
+    },
+  ] as CvEntry[],
+  education: [
+    {
+      period: "2024 à 2029",
+      title: "Programme Grande École",
+      place: "Epitech Paris",
+      summary:
+        "Pédagogie par projets en équipe : programmation système en C, C++ orienté objet, réseau, algorithmique, web et intelligence artificielle. Actuellement en 3e année.",
+    },
+  ] as CvEntry[],
+  associative: [
+    { period: "Depuis mars 2026", title: "PULSE, BDE", place: "Epitech Paris", summary: "Membre, ancien secrétaire." },
+    {
+      period: "Depuis janv. 2026",
+      title: "Programme Buddies",
+      place: "Epitech Paris",
+      summary: "Accompagnement d'étudiants internationaux en échange.",
+    },
+  ] as CvEntry[],
+  skills: [
+    { label: "Langages", value: "TypeScript, Python, Rust, C, C++, Go" },
+    { label: "Web", value: "React, Next.js, Astro, HTML, CSS, WebGL, Three.js, GSAP" },
+    { label: "Données et outils", value: "Supabase, Docker, Git, Vercel, CMake, Figma" },
+    { label: "IA et méthode", value: "Prompt engineering, Claude, MCP, Obsidian, IA générative" },
+    { label: "Langues", value: "Français et anglais, bilingue" },
+  ],
+  interests: "Littérature, écriture, biologie et biotechnologies.",
+};
 
-export const objective = "Stage de développement, de fin mars à fin août 2027.";
+const en: typeof fr = {
+  experience: [
+    {
+      period: "Since 2026",
+      title: "Freelance web developer",
+      place: "Self-employed, Paris",
+      summary:
+        "Showcase websites for local businesses: quote, custom or template-based mock-up, hand-over of the code and user guide, then hosting and maintenance.",
+      details: [
+        "Websites with no cookie banner, live opening hours and generated legal notices.",
+        "Built P-Finder, an in-house tool for prospecting, quotes and client project tracking.",
+      ],
+    },
+    {
+      period: "Since March 2026",
+      title: "Technical and teaching assistant",
+      place: "Epitech Paris",
+      summary: "Technical follow-up of first and second year students' projects in C, C++ and Python.",
+      details: ["Project reviews and running project defences."],
+    },
+    {
+      period: "Sept. to Dec. 2025",
+      title: "Software developer intern",
+      place: "Danone",
+      summary: "ABAP development and MuleSoft integration on real projects.",
+      details: ["Generative AI in Python and process automation with Power Platform."],
+    },
+    {
+      period: "July to Sept. 2025",
+      title: "Intern, IT team",
+      place: "AP-HP, Robert-Debré hospital",
+      summary: "Automation of management tasks in Active Directory.",
+      details: ["Designed and built inventory and IT asset management tools."],
+    },
+  ],
+  education: [
+    {
+      period: "2024 to 2029",
+      title: "Programme Grande École (Master's level)",
+      place: "Epitech Paris",
+      summary:
+        "Team project-based learning: systems programming in C, object-oriented C++, networking, algorithms, web and artificial intelligence. Currently in third year.",
+    },
+  ],
+  associative: [
+    { period: "Since March 2026", title: "PULSE, student union", place: "Epitech Paris", summary: "Member, former secretary." },
+    {
+      period: "Since Jan. 2026",
+      title: "Buddies programme",
+      place: "Epitech Paris",
+      summary: "Helping international exchange students settle in.",
+    },
+  ],
+  skills: [
+    { label: "Languages", value: "TypeScript, Python, Rust, C, C++, Go" },
+    { label: "Web", value: "React, Next.js, Astro, HTML, CSS, WebGL, Three.js, GSAP" },
+    { label: "Data and tools", value: "Supabase, Docker, Git, Vercel, CMake, Figma" },
+    { label: "AI and method", value: "Prompt engineering, Claude, MCP, Obsidian, generative AI" },
+    { label: "Spoken languages", value: "French and English, bilingual" },
+  ],
+  interests: "Literature, writing, biology and biotechnology.",
+};
 
-export const experience: CvEntry[] = [
-  {
-    period: "Depuis 2026",
-    title: "Développeur web freelance",
-    place: "Indépendant, Paris",
-    summary: "Sites vitrines pour les indépendants de conseil et de services, sous le nom Nacre.",
-    details: [
-      "Conception de P-Finder, mon outil interne de prospection, de devis et de suivi des projets.",
-    ],
-  },
-  {
-    period: "Depuis janv. 2026",
-    title: "Assistant pédagogique et technique",
-    place: "Epitech Paris",
-    summary: "J'encadre les étudiants de première et deuxième année.",
-    details: [
-      "Suivi des activités et aide technique sur les projets en C, C++ et Python.",
-      "Évaluation des projets et animation des soutenances.",
-    ],
-  },
-  {
-    period: "Sept. à déc. 2025",
-    title: "Stagiaire",
-    place: "Danone",
-    summary: "Poste de développeur polyvalent participant à des projets concrets autour",
-    details: [
-      "Du développement ABAP",
-      "De l'intégration MuleSoft",
-      "De l'IA générative avec Python",
-      "De l'automatisation via Power Platform"
-    ]
-  },
-  {
-    period: "Juil. à sept. 2025",
-    title: "Stagiaire",
-    place: "AP-HP, Hôpital Robert-Debré",
-    summary: "Poste de développeur polyvalent au sein de l'équipe informatique.",
-    details: [
-      "Mise en place d'outils d'automatisation de l'Active Directory",
-      "Conception et implémentation d'outils d'inventaire",
-      "Conception et implémentation d'outils de gestion du parc informatique"
-    ]
-  },
-];
-
-export const education: CvEntry[] = [
-  {
-    period: "2024 à 2029",
-    title: "Programme Grande École",
-    place: "Epitech Paris",
-    summary: "Formation par projets, en équipe : programmation système en C, C++ orienté objet, réseau, algorithmique, web et intelligence artificielle. Actuellement en troisième année.",
-  },
-];
-
-export const associative: CvEntry[] = [
-  {
-    period: "Depuis janv. 2026",
-    title: "Membre du BDE",
-    place: "Epitech Paris",
-    summary: "Ancien secrétaire.",
-  },
-  {
-    period: "Depuis janv. 2026",
-    title: "Programme Buddies",
-    place: "Epitech Paris",
-    summary: "J'accompagne les étudiants internationaux en échange : intégration à l'école et découverte de Paris.",
-  },
-];
-
-export const skills = [
-  { label: "Langages", value: "C, C++, Python, TypeScript, Rust, Go" },
-  { label: "Web", value: "Astro, React, Next.js, HTML, CSS, WebGL" },
-  { label: "Outils", value: "Git, CMake, Make, Docker, Figma, Supabase, Vercel" },
-  { label: "Langues", value: "Français et anglais, bilingue" },
-] as const;
-
-export const interests = "Littérature, écriture, biologie et biotechnologies.";
+export const cv = { fr, en };

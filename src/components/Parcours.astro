@@ -1,21 +1,25 @@
 ---
-import { associative, education, experience, interests, skills, type CvEntry } from "../data/cv";
+import { cv, type CvEntry } from "../data/cv";
 import { cvFile } from "../data/profile";
+import { langOf, t } from "../lib/i18n";
+
+const { associative, education, experience, interests, skills } = cv[langOf(Astro.url)];
+const w = t(Astro.url).parcours;
 
 const groups: { label: string; entries: CvEntry[] }[] = [
-  { label: "Expérience", entries: experience },
-  { label: "Formation", entries: education },
-  { label: "Engagements", entries: associative },
+  { label: w.experience, entries: experience },
+  { label: w.education, entries: education },
+  { label: w.associative, entries: associative },
 ];
 ---
 
 <section class="parcours" id="background" aria-labelledby="background-title">
   <div class="wrap">
     <header class="head">
-      <h2 id="background-title">Parcours</h2>
+      <h2 id="background-title">{w.title}</h2>
       <div class="cv-actions">
-        <a class="btn btn-dark" href={cvFile} download>Télécharger le CV (PDF)</a>
-        <a class="cv-web" href="/cv">Voir le CV en ligne</a>
+        <a class="btn btn-dark" href={cvFile} download>{w.download}</a>
+        <a class="cv-web" href="/cv">{w.view}</a>
       </div>
     </header>
 
@@ -58,7 +62,7 @@ const groups: { label: string; entries: CvEntry[] }[] = [
         ))
       }
       <div>
-        <dt>Ailleurs</dt>
+        <dt>{w.elsewhere}</dt>
         <dd>{interests}</dd>
       </div>
     </dl>

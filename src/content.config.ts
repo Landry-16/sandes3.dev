@@ -32,4 +32,20 @@ const projects = defineCollection({
     }),
 });
 
-export const collections = { projects };
+/**
+ * English text of a project in src/content/projects-en, same file name as the French one.
+ * Only the words: everything else (links, images, order) comes from the French file.
+ */
+const projectsEn = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/projects-en" }),
+  schema: z.object({
+    title: z.string().optional(),
+    summary: z.string(),
+    role: z.string().optional(),
+    coverAlt: z.string().optional(),
+    /** One per gallery image, in the same order. */
+    galleryAlts: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { projects, projectsEn };

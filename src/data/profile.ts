@@ -6,11 +6,9 @@ export const profile = {
   role: "Développeur logiciel et web",
   city: "Paris",
   email: "dulnakasandes16@gmail.com",
-  /** Printed on the PDF CV only, never rendered on the public pages. */
-  phone: "07 72 32 88 10",
   /** The positioning sentence under the name, for clients and recruiters alike. */
   tagline: "Je conçois des sites vitrines pour des indépendants, et des logiciels fiables.",
-  availability: "Disponible pour des missions. Stage recherché de fin mars à fin août 2027.",
+  availability: "Disponible pour des missions. Stage de 6 mois recherché, à partir de fin mars 2027.",
   links: {
     github: "https://github.com/Landry-16",
     linkedin: "https://www.linkedin.com/in/sandes-savarimuthu/",
@@ -20,4 +18,14 @@ export const profile = {
   },
 } as const;
 
+/** The English words of the profile; the rest is shared. */
+export const profileEn = {
+  ...profile,
+  role: "Software and web developer",
+  tagline: "I build showcase websites for independents, and reliable software.",
+  availability: "Open to projects. Looking for a 6-month internship starting late March 2027.",
+  links: { ...profile.links, nacre: "https://nacre.sandess.dev/en/", nacreQuote: "https://nacre.sandess.dev/en/contact/" },
+};
+
+/** The CV supplied as a PDF: "Voir le CV en ligne" shows it, the download buttons serve it. */
 export const cvFile = "/cv-sandes-savarimuthu.pdf";

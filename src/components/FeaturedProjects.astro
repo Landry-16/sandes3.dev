@@ -1,9 +1,12 @@
 ---
 import ProjectCard from "./ProjectCard.astro";
 import { getFeaturedProjects, getVisibleProjects } from "../lib/projects";
+import { langOf, t } from "../lib/i18n";
+
+const w = t(Astro.url).featured;
 
 /** Six at most: the selection lives in the projects' front matter (`featured: true`). */
-const featured = (await getFeaturedProjects()).slice(0, 6);
+const featured = (await getFeaturedProjects(langOf(Astro.url))).slice(0, 6);
 const total = (await getVisibleProjects()).length;
 /** Alternating rhythm: one wide card and one narrow card per row, then a row of three. */
 const pattern = ["large", "medium", "medium", "large", "small", "small", "small"] as const;
@@ -12,10 +15,10 @@ const pattern = ["large", "medium", "medium", "large", "small", "small", "small"
 <section class="projects" id="projects" data-spot aria-labelledby="projects-title">
   <div class="wrap">
     <header class="head">
-      <h2 id="projects-title">Projets phares</h2>
+      <h2 id="projects-title">{w.title}</h2>
       <div class="aside">
-        <p>Une sélection. Le code est ouvert quand le dépôt est public, les projets privés sont présentés en aperçu.</p>
-        <a class="all" href="/projects">Voir les {total} projets</a>
+        <p>{w.lede}</p>
+        <a class="all" href="/projects">{w.all(total)}</a>
       </div>
     </header>
     <div class="grid">

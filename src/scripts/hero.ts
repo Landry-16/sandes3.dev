@@ -8,7 +8,11 @@ const MAX_SAMPLES = 2048;
 /** Below this throughput the traced resolution is lowered to keep the page responsive. */
 const MIN_SAMPLES_PER_SECOND = 24;
 
-const formatSamples = (n: number): string => `${n.toLocaleString("fr-FR")} ${n > 1 ? "échantillons" : "échantillon"} par pixel`;
+const english = document.documentElement.lang === "en";
+const formatSamples = (n: number): string =>
+  english
+    ? `${n.toLocaleString("en-GB")} ${n > 1 ? "samples" : "sample"} per pixel`
+    : `${n.toLocaleString("fr-FR")} ${n > 1 ? "échantillons" : "échantillon"} par pixel`;
 
 export function startHero(root: HTMLElement): void {
   const canvas = root.querySelector<HTMLCanvasElement>("[data-hero-canvas]");

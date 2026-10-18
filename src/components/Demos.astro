@@ -1,22 +1,27 @@
 ---
 import { Image } from "astro:assets";
 import { homeTemplates, templateUrl } from "../data/templates";
-import { profile } from "../data/profile";
+import { profile, profileEn } from "../data/profile";
+import { langOf, t, term } from "../lib/i18n";
+
+const lang = langOf(Astro.url);
+const w = t(Astro.url).demos;
+const links = (lang === "en" ? profileEn : profile).links;
 
 /** Three demo sites, all fictional shops: never shown as client work. */
-const frames = homeTemplates.map((t) => ({
-  href: templateUrl(t.slug),
-  title: `${t.trade}, commerce fictif`,
-  caption: `Modèle · ${t.shop}`,
-  image: t.image,
-  alt: `Modèle ${t.trade.toLowerCase()} : la page d'accueil de ${t.shop}, commerce fictif`,
+const frames = homeTemplates.map((template) => ({
+  href: templateUrl(template.slug),
+  title: w.frameTitle(term(lang, template.trade)),
+  caption: w.caption(template.shop),
+  image: template.image,
+  alt: w.alt(term(lang, template.trade), template.shop),
 }));
 ---
 
 <section class="demos" id="demos" aria-labelledby="demos-title">
   <div class="wrap head">
-    <h2 id="demos-title">Modèles de démonstration</h2>
-    <p>Commerces fictifs, pour montrer le travail.</p>
+    <h2 id="demos-title">{w.title}</h2>
+    <p>{w.lede}</p>
   </div>
 
   <div class="strip" data-strip>
@@ -45,21 +50,21 @@ const frames = homeTemplates.map((t) => ({
     </ol>
   </div>
   <div class="wrap strip-controls">
-    <button type="button" class="step" data-strip-step="-1" aria-label="Modèles précédents">
+    <button type="button" class="step" data-strip-step="-1" aria-label={w.prev}>
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7" /></svg>
     </button>
-    <button type="button" class="step" data-strip-step="1" aria-label="Modèles suivants">
+    <button type="button" class="step" data-strip-step="1" aria-label={w.next}>
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7" /></svg>
     </button>
   </div>
 
   <div class="wrap freelance">
     <p>
-      <strong>Freelance.</strong> Je conçois des sites vitrines pour les indépendants de conseil et de services, sous le nom Nacre : un prix total annoncé avant de commencer, et chaque étape validée avant la suivante.
+      <strong>Freelance.</strong> {w.freelance}
     </p>
     <div class="freelance-actions">
-      <a class="btn btn-light" href={profile.links.nacreQuote}>Demander un devis pour un site</a>
-      <a class="btn btn-ghost" href={profile.links.nacre}>Découvrir Nacre</a>
+      <a class="btn btn-light" href={links.nacreQuote}>{w.quote}</a>
+      <a class="btn btn-ghost" href={links.nacre}>{w.nacre}</a>
     </div>
   </div>
 </section>
