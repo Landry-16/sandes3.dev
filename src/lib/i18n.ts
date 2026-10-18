@@ -60,9 +60,10 @@ const fr = {
   },
   demos: {
     title: "Modèles de démonstration",
-    lede: "Commerces fictifs, pour montrer le travail.",
+    lede: "Commerces fictifs et sites de démonstration, pour montrer le travail.",
     frameTitle: (trade: string) => `${trade}, commerce fictif`,
     caption: (shop: string) => `Modèle · ${shop}`,
+    showcase: (host: string) => `Site de démonstration · ${host}`,
     alt: (trade: string, shop: string) => `Modèle ${trade.toLowerCase()} : la page d'accueil de ${shop}, commerce fictif`,
     prev: "Modèles précédents",
     next: "Modèles suivants",
@@ -150,9 +151,10 @@ const en: typeof fr = {
   },
   demos: {
     title: "Demo templates",
-    lede: "Fictional shops, to show the work.",
+    lede: "Fictional shops and showcase sites, to show the work.",
     frameTitle: (trade: string) => `${trade}, fictional shop`,
     caption: (shop: string) => `Template · ${shop}`,
+    showcase: (host: string) => `Showcase site · ${host}`,
     alt: (trade: string, shop: string) => `${trade} template: the home page of ${shop}, a fictional shop`,
     prev: "Previous templates",
     next: "Next templates",
