@@ -9,24 +9,25 @@ const lang = langOf(Astro.url);
 const w = t(Astro.url).demos;
 const links = (lang === "en" ? profileEn : profile).links;
 
-/** The six templates (fictional shops, never shown as client work), then the showcase sites. */
+/** The showcase sites, then the six templates (fictional shops, never shown as client work). */
 const projects = await getVisibleProjects(lang);
 const showcases = showcaseProjects.flatMap((id) => projects.filter((p) => p.id === id && p.data.cover && p.data.demo));
-const frames = siteTemplates.map((template) => ({
-  href: templateUrl(template.slug),
-  title: w.frameTitle(term(lang, template.trade)),
-  caption: w.caption(template.shop),
-  image: template.image,
-  alt: w.alt(term(lang, template.trade), template.shop),
-})).concat(
-  showcases.map(({ data }) => ({
+const frames = [
+  ...showcases.map(({ data }) => ({
     href: data.demo!,
     title: data.title,
     caption: w.showcase(new URL(data.demo!).host),
     image: data.cover!,
     alt: data.coverAlt ?? data.title,
   })),
-);
+  ...siteTemplates.map((template) => ({
+    href: templateUrl(template.slug),
+    title: w.frameTitle(term(lang, template.trade)),
+    caption: w.caption(template.shop),
+    image: template.image,
+    alt: w.alt(term(lang, template.trade), template.shop),
+  })),
+];
 ---
 
 <section class="demos" id="demos" aria-labelledby="demos-title">

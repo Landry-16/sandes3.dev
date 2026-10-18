@@ -26,5 +26,5 @@ export const siteTemplates: SiteTemplate[] = [
 /** Public path of a template demo. */
 export const templateUrl = (slug: string): string => `/templates/${slug}/`;
 
-/** Showcase sites shown after the templates in the demo strip: project ids, in this order. */
+/** Showcase sites shown before the templates in the demo strip: project ids, in this order. */
 export const showcaseProjects = ["ecaille", "nocturne", "dreamlee-landing", "landry-landing-page"];
